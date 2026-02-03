@@ -1,0 +1,6 @@
+# Ignore outputs and runs
+outputs/
+outputs_versions/
+versions.json
+__pycache__/
+*.log
