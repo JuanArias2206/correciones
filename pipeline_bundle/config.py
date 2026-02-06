@@ -237,7 +237,10 @@ CATEGORIAS_VALIDAS = [
     'alcohol_etanol',
     'cannabinoides', 
     'escopolamina', 
-    'PSA_no_clasificado_lista', 
+    'PSA_no_clasificado_lista',
+    'medicamentos_no_SPA',  # Nueva: medicamentos legítimos (analgésicos, antibióticos, etc.)
+    'productos_limpieza',   # Nueva: productos de limpieza domésticos/industriales
+    'gases_combustibles',   # Nueva: gases industriales y combustibles (no SPA)
     'otros'
 ]
 

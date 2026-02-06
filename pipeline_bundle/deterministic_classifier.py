@@ -60,6 +60,22 @@ class DeterministicClassifier:
             r'\b(thinner|sacol|pegante|popper|nitrito|varsol|boxer)\b',  # Evita "gas" genérico
             re.IGNORECASE
         ),
+        
+        # =========================================================
+        # NUEVAS CATEGORÍAS - MEDICAMENTOS, LIMPIEZA, GASES
+        # =========================================================
+        'medicamentos_no_SPA': re.compile(
+            r'\b(acetaminofen|paracetamol|ibuprofeno|naproxeno|diclofenaco|amoxicilina|omeprazol|losartan|metformina|enalapril|loratadina|cetirizina|dolex|tylenol|advil|medicamentos)\b',
+            re.IGNORECASE
+        ),
+        'productos_limpieza': re.compile(
+            r'\b(clorox|hipoclorito|blanqueador|detergente|fabuloso|desinfectante|limpido|productos de limpieza|jabon|soda caustica)\b',
+            re.IGNORECASE
+        ),
+        'gases_combustibles': re.compile(
+            r'\b(gas natural|gas propano|gas butano|monoxido de carbono|dioxido de carbono|acpm|aceite combustible|gas pimienta|gas lacrimogeno)\b',
+            re.IGNORECASE
+        ),
     }
     
     def __init__(self, use_strong_confidence_only: bool = True):
