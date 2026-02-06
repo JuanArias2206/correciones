@@ -207,6 +207,14 @@ ESTIMULANTES_BLACKLIST: Set[str] = {
     "red bull", "monster",
     "bebida energetica", "bebida energética",
     "energizante",
+    # Productos para adelgazar (no SPA)
+    "sibutramina",
+    "clenbuterol",
+    "fentermina",
+    "pastilla para adelgazar", "pastillas para adelgazar",
+    "adelgazante", "adelgazantes",
+    # Nicotina (no es SPA en este proyecto)
+    "nicotina", "cigarro", "cigarrillo",
     # Productos agrícolas mal clasificados
     "methavin", "methergyn", "methylcarbamoyloxy",
     "methamex", "methomyl", "methox", "metsulfuron methyl",
@@ -228,6 +236,13 @@ ESTIMULANTES_BLACKLIST_REGEX = re.compile(
     r'|\bmonster\b'
     r'|\bbebida\s+energetica\b'
     r'|\benergizante\b'
+    r'|\bsibutramina\b'
+    r'|\bclenbuterol\b'
+    r'|\bfentermina\b'
+    r'|\bpastilla\s+para\s+adelgazar\b'
+    r'|\badelgazante\b'
+    r'|\bnicotina\b'
+    r'|\bcigarrillo?\b'
     r'|\bmethavin\b'
     r'|\bmethergyn\b'
     r'|\bmethomyl\b'
@@ -343,7 +358,14 @@ INHALANTES_BLACKLIST_REGEX = re.compile(
     r'|\bvapor de gasolina -humo\b'
     r'|\bgas irritante\b'
     r'|\bgas lacrimogeno\b'
-    r'|\bgas pimienta\b',
+    r'|\bgas pimienta\b'
+    r'|\bsulfuro de hidrogeno\b'
+    r'|\bsulfuro\b'
+    r'|\bdioxido de azufre\b'
+    r'|\bhelio\b'
+    r'|\bbutano\b'
+    r'|\bpentoxido de fosforo\b'
+    r'|\balcohol industrial\b',
     flags=re.IGNORECASE
 )
 
@@ -357,22 +379,67 @@ OPIOIDES_BLACKLIST: Set[str] = {
     "bupropion", "bupropión",
     "tiotropio bromuro",
     "topiramato",
+    # Medicamentos antidiarreicos que NO son SPA
+    "loperamida", "loperamida hcl",
+    # Antagonistas opioides (NO son opioides SPA)
+    "naloxona", "naloxon",
+    "naltrexone", "naltrexona", "naltrexon",
+    # Amapola y derivados que NO son SPA
+    "amapola", "ketum", # Sin contexto explícito de SPA
 }
 
 OPIOIDES_BLACKLIST_REGEX = re.compile(
     r'\bbupropion\b'
     r'|\btiotropio\s*bromuro\b'
-    r'|\btopiramato\b',
+    r'|\btopiramato\b'
+    r'|\bloperamid\w*\b'
+    r'|\bnaloxon\w*\b'
+    r'|\bnaltrexon\w*\b'
+    r'|\bamapola\b'
+    r'|\bketum\b',
     flags=re.IGNORECASE
 )
 
 # --- TRANQUILIZANTES Y SEDANTES ---
+# IMPORTANTE: Estos productos NO deben clasificarse como tranquilizantes en ESTE proyecto
 TRANQUILIZANTES_BLACKLIST: Set[str] = {
-    # Agregar productos específicos aquí si es necesario
+    # Antihistamínicos (NO son tranquilizantes en este proyecto)
+    "difenhidramina", "difenhidramina hcl",
+    "dimenhidrinato", "dramamine",
+    # Suplementos naturales (NO son tranquilizantes)
+    "melatonina", "goma de melatonina", "gomitas de melatonina",
+    "valeriana", "valeriano",
+    "pasiflora", "passiflora", "pasionaria",
+    # Relajantes musculares (NO son tranquilizantes en este proyecto)
+    "tizanidina",
+    # Antihistamínicos de segunda generación
+    "hidroxizina", "hidroxicina", "atarax",
+    # Escopolamina y análogos (NO son tranquilizantes, son anticolinérgicos)
+    "hioscina", "hiocina", "hiosina",
+    "butilbromuro de hioscina", "n-butilbromuro de hioscina",
+    "hioscina butilbromuro",
 }
 
+# Regex para tranquilizantes (patrón de exclusión)
 TRANQUILIZANTES_BLACKLIST_REGEX = re.compile(
-    r'$^',  # Regex vacío (no coincide con nada)
+    r'\bdifenhidra\w*\b'
+    r'|\bdimenhidri\w*\b'
+    r'|\bdramamine\b'
+    r'|\bmelatonin\w*\b'
+    r'|\bgoma\s+de\s+melatonin\w*\b'
+    r'|\bvalerian\w*\b'
+    r'|\bpasiflor\w*\b'
+    r'|\bpassiflor\w*\b'
+    r'|\bpasionaria\b'
+    r'|\btizanidin\w*\b'
+    r'|\bhidroxiz\w+\b'
+    r'|\bhidroxicin\w+\b'
+    r'|\batarax\b'
+    r'|\bhioscin\w+\b'
+    r'|\bhiocin\w+\b'
+    r'|\bhiosin\w+\b'
+    r'|\bbutilbromuro\s+de\s+hioscin\w*\b'
+    r'|\bn[\s\-]?butilbromuro\s+de\s+hioscin\w*\b',
     flags=re.IGNORECASE
 )
 
@@ -393,6 +460,14 @@ ALCOHOL_BLACKLIST_REGEX = re.compile(
 )
 
 # --- CANNABINOIDES ---
+# Patrón de SPA FUERTE para cannabinoides (para validar si hay trigger real)
+CANNABINOIDES_STRONG_TRIGGERS = re.compile(
+    r'\bmarihuana\b|\bmariguana\b|\bcannabis\b|\bthc\b|\bbareto\b'
+    r'|\bcripa\b|\bcripy\b|\bvareta\b|\bhashish\b|\bweed\b|\bporro\b'
+    r'|\bhuana\b',
+    flags=re.IGNORECASE
+)
+
 CANNABINOIDES_BLACKLIST: Set[str] = {
     # Agregar productos específicos aquí si es necesario
 }
@@ -403,9 +478,20 @@ CANNABINOIDES_BLACKLIST_REGEX = re.compile(
 )
 
 # --- ESCOPOLAMINA ---
+# IMPORTANTE: Escopolamina NO debe dispararse por hioscina/butilbromuro de hioscina
 ESCOPOLAMINA_BLACKLIST: Set[str] = {
     # Agregar productos específicos aquí si es necesario
 }
+
+# Patrón para detectar hioscina (que NO debe ir a escopolamina)
+HIOSCINA_PATTERN = re.compile(
+    r'\bhioscin\w+\b'
+    r'|\bhiocin\w+\b'
+    r'|\bhiosin\w+\b'
+    r'|\bbutilbromuro\s+de\s+hioscin\w*\b'
+    r'|\bn[\s\-]?butilbromuro\s+de\s+hioscin\w*\b',
+    flags=re.IGNORECASE
+)
 
 ESCOPOLAMINA_BLACKLIST_REGEX = re.compile(
     r'$^',  # Regex vacío (no coincide con nada)
@@ -455,6 +541,11 @@ def apply_category_blacklist(texto: str, categoria: str) -> bool:
     """
     Verifica si un texto debe ser EXCLUIDO de una categoría específica.
     Retorna True si el texto está en la blacklist de esa categoría.
+    
+    IMPORTANTE: Incluye lógica condicional para evitar falsos positivos:
+    - Escopolamina: NO si hay hioscina
+    - Cannabinoides: NO si NO hay trigger fuerte
+    - Cocaína: NO si NO hay trigger fuerte
     """
     texto_lower = texto.lower().strip()
     
@@ -469,13 +560,39 @@ def apply_category_blacklist(texto: str, categoria: str) -> bool:
             return True
         if ESTIMULANTES_BLACKLIST_REGEX.search(texto_lower):
             return True
+        
+        # Lógica condicional: si solo tiene "cafeina" o "amina" sin SPA fuerte
+        # NO la clasifiques como estimulante
+        if re.search(r'\bcafein\w*\b', texto_lower):
+            # Si tiene "cafeina" pero NO tiene anfetamina/metanfetamina/metilfenidato/etc
+            if not re.search(
+                r'\banfetamina\b|\bmetanfetamina\b|\bmetilfenidato\b'
+                r'|\britalin\b|\bconcerta\b|\badderall\b|\bcrystal\b|\bcrystal meth\b'
+                r'|\bspeed\b|\bcapilot\b|\bcriptonita\b',
+                texto_lower
+            ):
+                return True  # Excluir (solo cafeína, no es SPA)
+        
+        if re.search(r'\bamina\b', texto_lower):
+            # Si tiene "amina" pero NO tiene anfetamina/metanfetamina
+            if not re.search(r'\banfetamina\b|\bmetanfetamina\b', texto_lower):
+                return True  # Excluir
             
     elif categoria == 'cocaina_y_derivados':
         if texto_lower in COCAINA_BLACKLIST:
             return True
         if COCAINA_BLACKLIST_REGEX.search(texto_lower):
             return True
-            
+        
+        # Lógica condicional: si NO hay trigger fuerte, excluir
+        if not re.search(
+            r'\bcocain\w*\b|\bcrack\b|\bbazuco\b|\bperico\b'
+            r'|\bbase de coca\b|\bbenzoylmethylecgonine\b',
+            texto_lower
+        ):
+            # No tiene trigger fuerte para cocaína
+            return False  # Permitir si el LLM lo clasificó (solo hará si muy seguro)
+        
     elif categoria == 'inhalantes':
         if texto_lower in INHALANTES_BLACKLIST:
             return True
@@ -505,8 +622,16 @@ def apply_category_blacklist(texto: str, categoria: str) -> bool:
             return True
         if CANNABINOIDES_BLACKLIST_REGEX.search(texto_lower):
             return True
+        
+        # Lógica condicional: si NO hay trigger fuerte, excluir
+        if not CANNABINOIDES_STRONG_TRIGGERS.search(texto_lower):
+            return True  # Excluir si no hay trigger fuerte
             
     elif categoria == 'escopolamina':
+        # CRÍTICO: Escopolamina NO debe asignarse si hay hioscina/butilbromuro de hioscina
+        if HIOSCINA_PATTERN.search(texto_lower):
+            return True  # Excluir escopolamina si hay hioscina
+        
         if texto_lower in ESCOPOLAMINA_BLACKLIST:
             return True
         if ESCOPOLAMINA_BLACKLIST_REGEX.search(texto_lower):
