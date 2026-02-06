@@ -136,8 +136,7 @@ INDUSTRIAL_GASES_KEYWORDS: Set[str] = {
 # =========================================================
 # Estos se aplican DESPUÉS del LLM para corregir clasificaciones erróneas
 
-# --- ALUCINÓGENOS ---
-# Productos que el LLM erróneamente clasifica como alucinógenos
+# Alucinógenos: sin patrón genérico para "ácidos"
 ALUCINOGENOS_BLACKLIST: Set[str] = {
     # Ácidos químicos/médicos (NO son LSD)
     "acido folico", "ácido fólico",
@@ -160,8 +159,7 @@ ALUCINOGENOS_BLACKLIST: Set[str] = {
     # Hongos no alucinógenos
     "hongofenol", "hongo ganoderma", "removedor de hongos",
     "hongosin", "hongosan",
-    # Antitusivos
-    "antitusivo", "antitusivos", "robitusin", "robitussin",
+    "trazadona hongos alcohol",
 }
 
 # Regex para alucinógenos (patrón de exclusión)
@@ -185,8 +183,8 @@ ALUCINOGENOS_BLACKLIST_REGEX = re.compile(
     r'|\bremovedor\s+de\s+hongos\b'
     r'|\bhongosin\b'
     r'|\bhongosan\b'
-    r'|\bantitusivo\b'
-    r'|\brobitusin\b',
+    r'|\btrazadona\s+hongos\s+alcohol\b'
+    r'|\brobitussin\b(?!.*tusi)',  # Robitussin NO es tusi (antitusivo)
     flags=re.IGNORECASE
 )
 
@@ -201,6 +199,7 @@ ESTIMULANTES_BLACKLIST: Set[str] = {
     "cafiaspirina",
     "dipirona cafeina",
     "axcedrin", "excedrin",
+    "cafeina", "cafeína",  # Solo cafeina sin contexto SPA
     # Bebidas energéticas (contexto colombiano - no SPA)
     "vive 100", "vive100",
     "awake 500", "awake", # También es plaguicida
@@ -212,12 +211,46 @@ ESTIMULANTES_BLACKLIST: Set[str] = {
     "clenbuterol",
     "fentermina",
     "pastilla para adelgazar", "pastillas para adelgazar",
+    "pastilla adelgazar", "tabletas para adelgazar",
     "adelgazante", "adelgazantes",
     # Nicotina (no es SPA en este proyecto)
     "nicotina", "cigarro", "cigarrillo",
     # Productos agrícolas mal clasificados
     "methavin", "methergyn", "methylcarbamoyloxy",
     "methamex", "methomyl", "methox", "metsulfuron methyl",
+    # Medicamentos mal escritos o que contienen "amina" sin ser SPA
+    "amina",  # Solo "amina" sin anfetamina/metanfetamina
+    "exalt",
+    "cupex",
+    "adrenalina",
+    "epi-mek",
+    "full mina",
+    "profiamina",
+    "campeon",
+    "dulofetina",
+    "actformina",
+    "ally",
+    "anabolicos",
+    "benademina",
+    "berifen",
+    "brillaking",
+    "concerta",  # A menos que tenga metilfenidato explícito
+    "dantepamina",
+    "dientiamina",
+    "dotamina",
+    "fastfen",
+    "hawker",
+    "hetaformina",
+    "metforimina", "metformina",
+    "tdi 180",
+    "atomik",
+    "daconi",
+    "bupirop",
+    "metandienone",
+    "panzer amina",
+    "pep pills",
+    "roodup",
+    "tenamfetamina",
 }
 
 # Regex para estimulantes (patrón de exclusión)
@@ -239,14 +272,47 @@ ESTIMULANTES_BLACKLIST_REGEX = re.compile(
     r'|\bsibutramina\b'
     r'|\bclenbuterol\b'
     r'|\bfentermina\b'
-    r'|\bpastilla\s+para\s+adelgazar\b'
+    r'|\bpastilla(s)?\s+(para\s+)?adelgazar\b'
+    r'|\btabletas\s+para\s+adelgazar\b'
     r'|\badelgazante\b'
     r'|\bnicotina\b'
     r'|\bcigarrillo?\b'
     r'|\bmethavin\b'
     r'|\bmethergyn\b'
     r'|\bmethomyl\b'
-    r'|\bmetsulfuron\b',
+    r'|\bmetsulfuron\b'
+    r'|\bcafeina\b(?!.*anfetamin)(?!.*metanfetamin)'
+    r'|\bamina\b(?!.*anfetamin)(?!.*metanfetamin)'
+    r'|\bexalt\b'
+    r'|\bcupex\b'
+    r'|\badrenalina\b'
+    r'|\bepi-mek\b'
+    r'|\bfull\s+mina\b'
+    r'|\bprofiamina\b'
+    r'|\bcampeon\b'
+    r'|\bdulofetina\b'
+    r'|\bactformina\b'
+    r'|\bally\b'
+    r'|\banabolico\b'
+    r'|\bbenademina\b'
+    r'|\bberifen\b'
+    r'|\bbrillaking\b'
+    r'|\bdantepamina\b'
+    r'|\bdientiamina\b'
+    r'|\bdotamina\b'
+    r'|\bfastfen\b'
+    r'|\bhawker\b'
+    r'|\bhetaformina\b'
+    r'|\bmetforimina\b|\bmetformina\b'
+    r'|\btdi\s+180\b'
+    r'|\batomik\b'
+    r'|\bdaconi\b'
+    r'|\bbupirop\b'
+    r'|\bmetandienone\b'
+    r'|\bpanzer\s+amina\b'
+    r'|\bpep\s+pills\b'
+    r'|\broodup\b'
+    r'|\btenamfetamina\b',
     flags=re.IGNORECASE
 )
 
@@ -275,6 +341,10 @@ COCAINA_BLACKLIST: Set[str] = {
     "veneno para el cultivo de coca",
     "azuco",  # azufre coloidal
     "folicocarbonatode",
+    # Palabras similares que NO son cocaína
+    "coquan",
+    "cocaetileno",
+    "coscina",
 }
 
 # Regex para cocaína (patrón de exclusión)
@@ -295,7 +365,10 @@ COCAINA_BLACKLIST_REGEX = re.compile(
     r'|\bacido\s+de\s+coca\b'
     r'|\bcoca[\s\-]?cola\b'
     r'|\balcohol\s+de\s+cocina\b'
-    r'|\bcocadil\b',
+    r'|\bcocadil\b'
+    r'|\bcoquan\b'
+    r'|\bcocaetileno\b'
+    r'|\bcoscina\b',
     flags=re.IGNORECASE
 )
 
@@ -370,7 +443,36 @@ INHALANTES_BLACKLIST_REGEX = re.compile(
 )
 
 INHALANTES_BLACKLIST: Set[str] = {
-    # Agregar productos específicos aquí
+    # Gases industriales / domésticos (NO son inhalantes SPA)
+    "alcohol industrial",
+    "aceite combustible para motores",
+    "aceite de motor",
+    "dioxido de azufre", "dióxido de azufre",
+    "sulfuro de hidrogeno", "sulfuro de hidrógeno",
+    "sulfuro de carbono",
+    "sulfuro",
+    "ambientador",
+    "gas",  # Solo "gas" genérico
+    "gas butano",
+    "gas de carbono",
+    "gas domiciliario",
+    "gas natural",
+    "pentoxido de fosforo", "pentóxido de fósforo",
+    "rayol liquido",
+    "fosgas ec",
+    "easy off",
+    "helio",
+    "hexano",
+    "intoxicacion con dioxido de carbono",
+    "lubricantes",
+    "mezcla de productos quimicos desconocidos",
+    "mono de carbono", "monoxide de carbano",
+    "monoxido de carbon", "monóxido de carbono",
+    "pegatina",
+    "randall",
+    "resina de vidrio",
+    "vap",
+    "glufosinato de amonio",
 }
 
 # --- OPIOIDES ---
@@ -381,11 +483,21 @@ OPIOIDES_BLACKLIST: Set[str] = {
     "topiramato",
     # Medicamentos antidiarreicos que NO son SPA
     "loperamida", "loperamida hcl",
+    "lomotil",
     # Antagonistas opioides (NO son opioides SPA)
     "naloxona", "naloxon",
     "naltrexone", "naltrexona", "naltrexon",
     # Amapola y derivados que NO son SPA
-    "amapola", "ketum", # Sin contexto explícito de SPA
+    "amapola", "ketum",
+    # Variaciones mal escritas que NO son opioides
+    "fentopen",
+    "paracetadona",
+    "tramina",
+    "tranadona",
+    "metmorfina",
+    "fentoato",
+    "tizodinametrazadona",
+    "tragadolinavelafexina",
 }
 
 OPIOIDES_BLACKLIST_REGEX = re.compile(
@@ -393,10 +505,19 @@ OPIOIDES_BLACKLIST_REGEX = re.compile(
     r'|\btiotropio\s*bromuro\b'
     r'|\btopiramato\b'
     r'|\bloperamid\w*\b'
+    r'|\blomotil\b'
     r'|\bnaloxon\w*\b'
     r'|\bnaltrexon\w*\b'
     r'|\bamapola\b'
-    r'|\bketum\b',
+    r'|\bketum\b'
+    r'|\bfentopen\b'
+    r'|\bparacetadona\b'
+    r'|\btramina\b(?!dol)'
+    r'|\btranadona\b'
+    r'|\bmetmorfina\b'
+    r'|\bfentoato\b'
+    r'|\btizodinametrazadona\b'
+    r'|\btragadolinavelafexina\b',
     flags=re.IGNORECASE
 )
 
@@ -418,6 +539,8 @@ TRANQUILIZANTES_BLACKLIST: Set[str] = {
     "hioscina", "hiocina", "hiosina",
     "butilbromuro de hioscina", "n-butilbromuro de hioscina",
     "hioscina butilbromuro",
+    # Otros medicamentos que NO son tranquilizantes SPA
+    "litio", "carbonato de litio",
 }
 
 # Regex para tranquilizantes (patrón de exclusión)
@@ -439,7 +562,9 @@ TRANQUILIZANTES_BLACKLIST_REGEX = re.compile(
     r'|\bhiocin\w+\b'
     r'|\bhiosin\w+\b'
     r'|\bbutilbromuro\s+de\s+hioscin\w*\b'
-    r'|\bn[\s\-]?butilbromuro\s+de\s+hioscin\w*\b',
+    r'|\bn[\s\-]?butilbromuro\s+de\s+hioscin\w*\b'
+    r'|\blitio\b'
+    r'|\bcarbonato\s+de\s+litio\b',
     flags=re.IGNORECASE
 )
 
@@ -469,11 +594,26 @@ CANNABINOIDES_STRONG_TRIGGERS = re.compile(
 )
 
 CANNABINOIDES_BLACKLIST: Set[str] = {
-    # Agregar productos específicos aquí si es necesario
+    # Falsos positivos que contienen "can" pero NO son cannabis
+    "ganabano", "guanabano",
+    "rambler",
+    "gruya", "grulla",
+    "guayaguil", "guayaquil",
+    "guayapal",
+    "kalach green",
+    "vaper", "vaporizador",
+    "aqui si can",
 }
 
 CANNABINOIDES_BLACKLIST_REGEX = re.compile(
-    r'$^',  # Regex vacío (no coincide con nada)
+    r'\bganabano\b|\bguanabano\b'
+    r'|\brambler\b'
+    r'|\bgru[ly]a\b'
+    r'|\bguaya(guil|pal)\b'
+    r'|\bkalach\s+green\b'
+    r'|\bvap(er|orizador)\b'
+    r'|\baqui\s+si\s+can\b'
+    r'|\bsustancia\s+verde\b',
     flags=re.IGNORECASE
 )
 
