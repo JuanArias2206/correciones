@@ -28,10 +28,10 @@ DEEPSEEK_BASE_URL = os.getenv('DEEPSEEK_BASE_URL', 'https://api.deepseek.com')
 LLM_DELAY_SECONDS = int(os.getenv('LLM_DELAY_SECONDS', '5'))
 
 # Tamaño del lote para clasificación con LLM
-LLM_BATCH_SIZE = int(os.getenv('LLM_BATCH_SIZE', '10'))
+LLM_BATCH_SIZE = int(os.getenv('LLM_BATCH_SIZE', '50'))  # Mayor = menos llamadas API + better context
 
 # Timeout de llamadas al LLM (segundos)
-LLM_TIMEOUT_SECONDS = int(os.getenv('LLM_TIMEOUT_SECONDS', '60'))
+LLM_TIMEOUT_SECONDS = int(os.getenv('LLM_TIMEOUT_SECONDS', '120'))
 
 # Presupuesto dinámico de caracteres para batching (evita batches demasiado grandes)
 # Aproximadamente 6k-12k caracteres por batch
@@ -47,6 +47,7 @@ CACHE_DB_PATH = os.path.join(BASE_DIR, 'cache', 'classifications_cache.db')
 ENABLE_CACHE = os.getenv('ENABLE_CACHE', 'true').lower() == 'true'
 ENABLE_DETERMINISTIC = os.getenv('ENABLE_DETERMINISTIC', 'true').lower() == 'true'
 ENABLE_METRICS = os.getenv('ENABLE_METRICS', 'true').lower() == 'true'
+ENABLE_LLM = os.getenv('ENABLE_LLM', 'true').lower() == 'true'
 
 # Temperatura para LLM (reducida para mayor consistencia)
 LLM_TEMPERATURE = float(os.getenv('LLM_TEMPERATURE', '0.0'))
@@ -191,7 +192,7 @@ file_sheets_map = {
 # =========================================================
 # RUTAS DE SALIDA
 # =========================================================
-OUTPUT_DIR = os.path.join(BASE_DIR, 'outputs', 'clasificaciones_conteo')
+OUTPUT_DIR = os.path.join(BASE_DIR, '..', 'resultados_v5')
 
 # =========================================================
 # MAPAS DE VÍAS DE EXPOSICIÓN

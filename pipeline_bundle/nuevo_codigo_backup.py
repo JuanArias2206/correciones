@@ -189,18 +189,13 @@ def is_oral_route(code: Optional[int]) -> bool:
 # =========================================================
 # 3) PROMPT COMPACTO Y CACHE-FRIENDLY (v2.0)
 # =========================================================
-def build_llm_prompt_compact(nombres_pro_lista: List[str], context_dict: Dict[str, str] = None) -> Tuple[str, Dict[str, str]]:
+def build_llm_prompt_compact(nombres_pro_lista: List[str]) -> Tuple[str, Dict[str, str]]:
     """
     Construye prompt COMPACTO (reduce ~50% output tokens):
     - Items SIEMPRE al final (para prefix caching)
     - Respuesta JSON compacta: [{"id":"1","c":["cocaina_y_derivados"]}]
     - Sin prosa, solo reglas críticas y falsos positivos conocidos
     - Temperature=0.0 para máxima consistencia
-    - MEJORADO: Incluye contexto de vía de exposición cuando está disponible
-    - MEJORADO v2: Reglas explícitas por vía de exposición para mejor precisión
-    
-    context_dict: Opcional - dict con información contextual {nombre: "contexto"}
-                  ej: {"varsol": "vía: respiratoria (80%)"}
     """
     id_to_nom_clean: Dict[str, str] = {str(i): clean_text(item) for i, item in enumerate(nombres_pro_lista)}
     
@@ -210,72 +205,35 @@ Respuesta SOLO JSON compacto: [{"id":"0","c":["cocaina_y_derivados"]}]
 CATEGORÍAS: alucinogenos, cocaina_y_derivados, opioides, estimulantes, inhalantes, 
 tranquilizantes_y_sedantes, alcohol_etanol, cannabinoides, escopolamina, PSA_no_clasificado_lista, otros
 
-════════════════════════════════════════════════════════════════════════════════
-INTERPRETACIÓN DE VÍA DE EXPOSICIÓN (entre corchetes - indica distribución real):
-════════════════════════════════════════════════════════════════════════════════
-- [vía: respiratoria (90%)] = En 90% de reportes se usó de forma inhalada
-  → SI es inhalante (thinner, varsol, acetona, pegante, etc.) → CLASIFICAR como "inhalantes"
-  → NO SPA de otra vía → "otros"
-
-- [vía: oral (95%)] = En 95% de reportes se ingirió oralmente
-  → SI es alcohol/bebida alcohólica → CLASIFICAR como "alcohol_etanol"
-  → SI es medicamento/droga legítima (acetaminofén, aspirina, etc.) → "otros"
-  → SI es SPA claramente (cocaína, heroína, etc.) → Clasificar normalmente
-
-- [vía: mixta] o sin especificar = Múltiples rutas reportadas
-  → Aplicar reglas normales de SPA
-  → Considerar la sustancia en TODAS sus posibles formas
-
-════════════════════════════════════════════════════════════════════════════════
-REGLA CRÍTICA VÍA EXPOSICIÓN:
-════════════════════════════════════════════════════════════════════════════════
-- Si vía=respiratoria (>80%) Y es inhalante → "inhalantes" ✅
-- Si vía=respiratoria (>80%) Y es plaguicida/gas → "otros" (NO SPA) ❌
-- Si vía=oral (>90%) Y es alcohol → "alcohol_etanol" ✅
-- Si vía=oral (>90%) Y es medicamento legítimo → "otros" (NO SPA) ❌
-- Si vía=oral Y es cocaína/heroína/marihuana → Clasificar normalmente ✅
-
-════════════════════════════════════════════════════════════════════════════════
 FALSOS POSITIVOS CRÍTICOS (EXCLUIR → "otros"):
-════════════════════════════════════════════════════════════════════════════════
 - Hioscina/butilbromuro de hioscina → NUNCA escopolamina ni tranquilizantes → "otros"
 - Difenhidramina/dimenhidrinato/dramamine → "otros" (NO tranquilizantes)
 - Melatonina/valeriana/pasiflora → "otros" (NO tranquilizantes)
 - Tizanidina/hidroxizina/hidroxicina → "otros" (NO tranquilizantes)
 - Loperamida/naloxona/naltrexone → "otros" (NO opioides)
-- Cafeína SOLA o en analgésicos → "otros" (NO estimulantes)
-- Amina genérica → "otros" (NO estimulantes; excepción: anfetamina/metanfetamina)
-- Gas genérico (propano, butano, helio) → "otros" (NO inhalantes; excepción: thinner/sacol)
-- Plaguicidas/herbicidas (glifosato, paraquat, etc.) → "otros" (NO SPA)
-- Productos limpieza/corrosivos → "otros" (NO SPA)
-- Veneno/mataratas/raticidas → "otros" (NO SPA)
+- Cafeína SOLA o en analgésicos (aspirina+cafeína, acetaminofén+cafeína) → "otros" (NO estimulantes)
+- Únicamente "amina" genérica → "otros" (NO estimulantes; excepción: anfetamina/metanfetamina)
+- Gas genérico/propano/butano/helio/dióxido/sulfuro → "otros" (NO inhalantes; excepción: thinner/sacol/poppers)
+- Plaguicidas/herbicidas/productos agrícolas (rafaga, sicario, arriero, awake 500, etc.) → "otros"
+- Productos limpieza/corrosivos/ácidos industriales → "otros"
 
-════════════════════════════════════════════════════════════════════════════════
 REGLAS POSITIVAS (DEBEN ir a categoría si presente):
-════════════════════════════════════════════════════════════════════════════════
 - Cocaína/crack/bazuco/perico → cocaina_y_derivados
-- Marihuana/cannabis/THC/bareto/cripa/cripy → cannabinoides
+- Marihuana/cannabis/THC/bareto/cripa → cannabinoides
 - Heroína/fentanilo/morfina/tramadol/oxicontin → opioides (excepto: loperamida, naloxona)
 - Anfetamina/metanfetamina/metilfenidato/ritalin/adderall/crystal → estimulantes
-- Cerveza/vino/aguardiente/ron/whisky/vodka/etanol → alcohol_etanol (SI vía≈oral)
+- Cerveza/vino/aguardiente/ron/whisky/vodka/etanol → alcohol_etanol
 - Benzodiacepinas (clonazepam/alprazolam/diazepam/lorazepam) → tranquilizantes_y_sedantes
 - LSD/DMT/psilocibina/MDMA/2CB/tusi/mescalina → alucinogenos
-- Thinner/sacol/pegante/varsol (inhalables) → inhalantes (SI vía≈respiratoria)
-- Escopolamina/burundanga → escopolamina (SIN hioscina)
+- Thinner/sacol/pegante/varsol/poppers (inhalables) → inhalantes
+- Escopolamina/burundanga (SIN hioscina) → escopolamina
 
-════════════════════════════════════════════════════════════════════════════════
-REGLA FINAL:
-════════════════════════════════════════════════════════════════════════════════
-Si NO hay trigger explícito de SPA → "otros". Preferir "otros" ante duda.
-Respetar distribución de vía de exposición como contexto de decisión.
+REGLA FINAL: Si NO hay trigger explícito de SPA → "otros". Preferir "otros" ante duda.
 
 Items:"""
     
     for item_id, nom_clean in id_to_nom_clean.items():
-        ctx = ""
-        if context_dict and nom_clean in context_dict:
-            ctx = f" [{context_dict[nom_clean]}]"
-        prompt_txt += f'\n{item_id}:{nom_clean}{ctx}'
+        prompt_txt += f'\n{item_id}:{nom_clean}'
     
     return prompt_txt, id_to_nom_clean
 
@@ -356,49 +314,6 @@ def parse_llm_json(texto_respuesta: str) -> List[Dict[str, Any]]:
     """Alias para compatibilidad."""
     return parse_llm_json_compact(texto_respuesta)
 
-
-def build_exposure_context(df: pd.DataFrame, nombres_pro_lista: List[str]) -> Dict[str, str]:
-    """
-    Extrae contexto DETALLADO de vía de exposición para cada producto.
-    Muestra distribución completa de rutas para mejor decisión del LLM.
-    
-    Returns:
-        Dict[str, str]: {producto: "vía: respiratoria (80%), oral (15%), dermal (5%)"}
-    """
-    context = {}
-    
-    for nombre in nombres_pro_lista:
-        rows = df[df['nom_pro'] == nombre]
-        if len(rows) == 0:
-            continue
-        
-        # Filtrar valores no nulos de vía de exposición
-        via_values = rows['via_exposicion_texto'].dropna()
-        if len(via_values) == 0:
-            continue  # No hay información de vía para este producto
-        
-        # Contar vías de exposición
-        via_counts = via_values.value_counts()
-        
-        if len(via_counts) == 0:
-            continue  # Sin datos válidos
-        elif len(via_counts) == 1:
-            # Una sola vía - mostrar con claridad
-            via = via_counts.index[0]
-            context[nombre] = f"vía: {via}"
-        else:
-            # Múltiples vías - mostrar distribución ordenada por frecuencia
-            distribucion = []
-            for via, count in via_counts.items():
-                pct = 100 * count / len(via_values)
-                if pct >= 5:  # Solo mostrar vías con 5% o más
-                    distribucion.append(f"{via} ({pct:.0f}%)")
-            
-            if distribucion:
-                context[nombre] = f"vías: {', '.join(distribucion)}"
-    
-    return context
-
 # =========================================================
 # 5) CLASIFICACIÓN LLM CON BATCHING DINÁMICO
 # =========================================================
@@ -408,14 +323,12 @@ class DynamicBatchLLMClassifier:
     - Batching dinámico por presupuesto de caracteres
     - Retry con exponential backoff
     - Fallback a regex para faltantes
-    - MEJORADO: Incluye contexto de vía de exposición en prompts
     """
-    def __init__(self, llm_client, delay_seconds=5, max_retries=3, budget_chars=8000, exposure_context: Dict[str, str] = None):
+    def __init__(self, llm_client, delay_seconds=5, max_retries=3, budget_chars=8000):
         self.llm_client = llm_client
         self.delay_seconds = delay_seconds
         self.max_retries = max_retries
         self.budget_chars = budget_chars
-        self.exposure_context = exposure_context or {}
         self.incidencias = defaultdict(int)
     
     def _estimate_batch_size(self, nombres_list: List[str]) -> int:
@@ -431,68 +344,26 @@ class DynamicBatchLLMClassifier:
         return min(batch_size, LLM_BATCH_SIZE)
     
     def classify_batch(self, nombres_pro_lista: List[str]) -> Dict[str, List[str]]:
-        """Clasifica con retry y fallbacks. Incluye contexto de vía de exposición si está disponible."""
+        """Clasifica con retry y fallbacks."""
         if not nombres_pro_lista:
             return {}
         
         dynamic_batch_size = self._estimate_batch_size(nombres_pro_lista)
         all_results = {}
         
-        total_batches = (len(nombres_pro_lista) + dynamic_batch_size - 1) // dynamic_batch_size
-        print(f"\n📊 PROCESAMIENTO DE {len(nombres_pro_lista):,} productos en {total_batches} batches")
-        print(f"   Tamaño estimado por batch: {dynamic_batch_size} items\n")
-        
-        for batch_num, batch_start in enumerate(range(0, len(nombres_pro_lista), dynamic_batch_size), 1):
+        for batch_start in range(0, len(nombres_pro_lista), dynamic_batch_size):
             batch_end = min(batch_start + dynamic_batch_size, len(nombres_pro_lista))
             batch_items = nombres_pro_lista[batch_start:batch_end]
             
-            print(f"\n{'='*80}")
-            print(f"[BATCH {batch_num}/{total_batches}] Procesando {len(batch_items)} productos ({batch_start+1}-{batch_end})")
-            print(f"{'='*80}")
-            print(f"\n💡 NOTA: Porcentaje en corchetes = % de reportes con esa vía de exposición")
-            print(f"   Ej: [vía: oral (95%)] = En 95% de casos fue reportada vía ORAL")
-            print(f"   El LLM usa esto para mejorar precisión de clasificación\n")
-            
-            # Mostrar productos del batch con sus vías de exposición
-            print(f"\n📋 Productos en este batch (con distribución de vías de exposición):")
-            for i, item in enumerate(batch_items[:12], 1):  # Mostrar primeros 12
-                via_info = self.exposure_context.get(item, "vía: desconocida")
-                print(f"   {i:2d}. {item:48s} [{via_info}]")
-            if len(batch_items) > 12:
-                print(f"   ... y {len(batch_items) - 12} más")
-            
-            # Construir contexto de exposición para este batch
-            batch_context = {item: self.exposure_context[item] for item in batch_items if item in self.exposure_context}
-            
-            llm_prompt, id_to_nom_clean = build_llm_prompt_compact(batch_items, context_dict=batch_context)
-            
-            # Mostrar preview del prompt
-            prompt_lines = llm_prompt.split('\n')
-            print(f"\n💬 Preview del prompt enviado al LLM:")
-            print(f"   {prompt_lines[0]}")  # Primera línea
-            print(f"   ... (instrucciones intermedias) ...")
-            print(f"   Items (primeros 5):")
-            for line in prompt_lines[-10:-5]:
-                if line.strip():
-                    print(f"   {line[:70]}")
-            
+            llm_prompt, id_to_nom_clean = build_llm_prompt_compact(batch_items)
             input_ids = set(id_to_nom_clean.keys())
             
             success = False
             for attempt in range(self.max_retries):
                 try:
-                    print(f"\n⏳ Intento {attempt + 1}/{self.max_retries}: Llamando a DeepSeek API...")
                     time.sleep(self.delay_seconds)
-                    
-                    inicio = time.time()
                     texto_llm = self.llm_client.generate(llm_prompt)
-                    tiempo_llm = time.time() - inicio
-                    
-                    print(f"   ✅ Respuesta recibida en {tiempo_llm:.2f}s")
-                    print(f"   Tamaño: {len(texto_llm)} caracteres")
-                    
                     resultados = parse_llm_json_compact(texto_llm)
-                    print(f"   ✅ JSON parseado: {len(resultados)} items clasificados")
                     
                     mapeo_batch = {}
                     ids_vistos = set()
@@ -518,39 +389,25 @@ class DynamicBatchLLMClassifier:
                     ids_faltantes = input_ids - ids_vistos
                     if ids_faltantes:
                         self.incidencias['ids_faltantes'] += len(ids_faltantes)
-                        print(f"   ⚠️  {len(ids_faltantes)} IDs faltantes en respuesta LLM → usando regex como fallback")
                         for mid in ids_faltantes:
                             nom = id_to_nom_clean[mid]
                             mapeo_batch[nom] = classify_substance_regex(nom)
                     
                     all_results.update(mapeo_batch)
                     success = True
-                    print(f"   ✅ Batch {batch_num}/{total_batches} completado: {len(mapeo_batch)} productos clasificados")
                     break
                     
                 except Exception as e:
                     self.incidencias['error_llm'] += 1
-                    print(f"   ❌ Error LLM (intento {attempt+1}): {str(e)[:100]}")
+                    print(f"⚠️  Error LLM (intento {attempt+1}): {e}")
                     if attempt < self.max_retries - 1:
-                        wait_time = 2 ** attempt
-                        print(f"   ⏳ Esperando {wait_time}s antes de reintentar...")
-                        time.sleep(wait_time)
+                        time.sleep(2 ** attempt)
             
             if not success:
                 # Fallback final a regex para TODO el batch
-                print(f"\n   ❌ Batch {batch_num} falló después de {self.max_retries} intentos")
-                print(f"   🔄 Usando regex como fallback para todos los {len(batch_items)} productos...")
+                print(f"⚠️  Batch {batch_start}-{batch_end} falló. Usando regex.")
                 for nom in batch_items:
                     all_results[clean_text(nom)] = classify_substance_regex(nom)
-                print(f"   ✅ Fallback completado")
-        
-        print(f"\n{'='*80}")
-        print(f"✅ ETAPA 4 COMPLETADA: {len(all_results):,} productos clasificados por LLM")
-        if self.incidencias:
-            print(f"\n📊 Incidencias encontradas:")
-            for inc_type, count in sorted(self.incidencias.items(), key=lambda x: x[1], reverse=True):
-                print(f"   - {inc_type}: {count}")
-        print(f"{'='*80}\n")
         
         return all_results
 
@@ -660,40 +517,32 @@ class Exporter:
         print("  → Lista de productos filtrados guardada en: productos_filtrados_blacklist.xlsx")
 
     def save_outputs(self, df_consolidado: pd.DataFrame) -> None:
-        """Genera los 5 archivos Excel de salida con columna de método de clasificación."""
         columnas_base = [
             'origen_hoja', 'fec_not', 'cod_depto_o', 'cod_mun_o', 'sexo', 'edad', 'cod_pais',
             'nom_pro', 'via_exposicion_col', 'via_exposicion_codigo', 'via_exposicion_texto',
-            'grupos_sustancia_final', 'grupos_sustancia_filtrado', 'metodo_clasificacion'
+            'grupos_sustancia_final', 'grupos_sustancia_filtrado'
         ]
         columnas_existentes = [c for c in columnas_base if c in df_consolidado.columns]
-        df_filtrado = df_consolidado[columnas_existentes].copy()
+        df_filtrado = df_consolidado[columnas_existentes]
 
         os.makedirs(self.output_dir, exist_ok=True)
-
+        
         print("\n--- Generando 5 archivos de salida ---")
-
-        # Método por producto (para archivos agregados)
-        metodo_por_producto = {}
-        if 'metodo_clasificacion' in df_consolidado.columns:
-            metodo_por_producto = df_consolidado.groupby('nom_pro')['metodo_clasificacion'].first().to_dict()
-
-        # 1. resultados_clasificacion_llm_avanzada.xlsx (resultado principal con método)
+        
+        # 1. resultados_clasificacion_llm_avanzada.xlsx (resultado principal)
         output_path_principal = os.path.join(self.output_dir, 'resultados_clasificacion_llm_avanzada.xlsx')
         try:
             df_filtrado.to_excel(output_path_principal, index=False)
-            print(f"✅ resultados_clasificacion_llm_avanzada.xlsx ({len(df_filtrado):,} filas)")
+            print(f"✅ resultados_clasificacion_llm_avanzada.xlsx")
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"❌ Error al guardar resultado principal: {e}")
 
-        # Preparar categorías
-        all_filtered_categories = sorted(set(
-            cat for sublist in df_consolidado['grupos_sustancia_filtrado'] for cat in sublist
-        ))
-
+        # Preparar categorías para los demás archivos
+        all_filtered_categories = set(cat for sublist in df_consolidado['grupos_sustancia_filtrado'] for cat in sublist)
+        
         # 2. resumen_clasificacion_avanzada.xlsx (resumen por categoría y hoja)
         resumen_data = []
-        for sheet in sorted(df_consolidado['origen_hoja'].unique()):
+        for sheet in df_consolidado['origen_hoja'].unique():
             df_sheet = df_consolidado[df_consolidado['origen_hoja'] == sheet]
             for cat in all_filtered_categories:
                 conteo = df_sheet['grupos_sustancia_filtrado'].apply(lambda x: cat in x).sum()
@@ -702,406 +551,245 @@ class Exporter:
                     'grupo_sustancia_final': cat,
                     'conteo': conteo
                 })
+
         df_resumen = pd.DataFrame(resumen_data)
         df_resumen = df_resumen.sort_values(by=['origen_hoja', 'conteo'], ascending=[True, False])
+        
         output_path_resumen = os.path.join(self.output_dir, 'resumen_clasificacion_avanzada.xlsx')
         try:
             df_resumen.to_excel(output_path_resumen, index=False)
             print(f"✅ resumen_clasificacion_avanzada.xlsx")
         except Exception as e:
-            print(f"❌ Error: {e}")
-
-        # 3. productos_por_categoria.xlsx (productos únicos por categoría CON método)
-        productos_cat_data = []
+            print(f"❌ Error al guardar resumen: {e}")
+        
+        # 3. productos_por_categoria.xlsx (productos únicos por categoría)
+        productos_categoria_data = []
         for cat in all_filtered_categories:
-            prods = df_consolidado[
-                df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)
-            ]['nom_pro'].unique()
-            for prod in prods:
-                productos_cat_data.append({
+            productos_en_cat = df_consolidado[df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)]['nom_pro'].unique().tolist()
+            for prod in productos_en_cat:
+                productos_categoria_data.append({
+                    'categoria': cat,
+                    'producto': prod
+                })
+        
+        if productos_categoria_data:
+            df_productos_cat = pd.DataFrame(productos_categoria_data)
+            df_productos_cat = df_productos_cat.sort_values(by=['categoria', 'producto'])
+            output_path_productos_cat = os.path.join(self.output_dir, 'productos_por_categoria.xlsx')
+            try:
+                df_productos_cat.to_excel(output_path_productos_cat, index=False)
+                print(f"✅ productos_por_categoria.xlsx")
+            except Exception as e:
+                print(f"❌ Error al guardar productos_por_categoria: {e}")
+        
+        # 4. productos_por_categoria_conteo.xlsx (productos con conteo por categoría)
+        productos_categoria_conteo_data = []
+        for cat in all_filtered_categories:
+            productos_conteo = df_consolidado[df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)]['nom_pro'].value_counts()
+            for prod, count in productos_conteo.items():
+                productos_categoria_conteo_data.append({
                     'categoria': cat,
                     'producto': prod,
-                    'metodo_clasificacion': metodo_por_producto.get(prod, 'desconocido')
+                    'conteo': count
                 })
-        if productos_cat_data:
-            df_pcat = pd.DataFrame(productos_cat_data)
-            df_pcat = df_pcat.sort_values(by=['categoria', 'producto'])
+        
+        if productos_categoria_conteo_data:
+            df_productos_cat_conteo = pd.DataFrame(productos_categoria_conteo_data)
+            df_productos_cat_conteo = df_productos_cat_conteo.sort_values(by=['categoria', 'conteo'], ascending=[True, False])
+            output_path_productos_cat_conteo = os.path.join(self.output_dir, 'productos_por_categoria_conteo.xlsx')
             try:
-                df_pcat.to_excel(os.path.join(self.output_dir, 'productos_por_categoria.xlsx'), index=False)
-                print(f"✅ productos_por_categoria.xlsx ({len(df_pcat):,} registros)")
+                df_productos_cat_conteo.to_excel(output_path_productos_cat_conteo, index=False)
+                print(f"✅ productos_por_categoria_conteo.xlsx")
             except Exception as e:
-                print(f"❌ Error: {e}")
-
-        # 4. productos_por_categoria_conteo.xlsx (una hoja por categoría + hoja "Todos")
-        productos_conteo_data = []
-        for cat in all_filtered_categories:
-            df_cat = df_consolidado[df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)]
-            conteo = df_cat['nom_pro'].value_counts()
-            for prod, count in conteo.items():
-                productos_conteo_data.append({
-                    'categoria': cat,
-                    'producto': prod,
-                    'conteo': count,
-                    'metodo_clasificacion': metodo_por_producto.get(prod, 'desconocido')
-                })
-        if productos_conteo_data:
-            df_pconteo = pd.DataFrame(productos_conteo_data)
-            df_pconteo = df_pconteo.sort_values(by=['categoria', 'conteo'], ascending=[True, False])
-            try:
-                output_path_pconteo = os.path.join(self.output_dir, 'productos_por_categoria_conteo.xlsx')
-                with pd.ExcelWriter(output_path_pconteo, engine='openpyxl') as writer:
-                    # Hoja 1: Todos los productos
-                    df_pconteo.to_excel(writer, sheet_name='Todos', index=False)
-                    
-                    # Una hoja por cada categoría
-                    for cat in all_filtered_categories:
-                        df_cat_only = df_pconteo[df_pconteo['categoria'] == cat].copy()
-                        # Remover columna 'categoria' ya que está implícita en el nombre de la hoja
-                        df_cat_only = df_cat_only[['producto', 'conteo', 'metodo_clasificacion']]
-                        # Truncar nombre de hoja a 31 caracteres (límite de Excel)
-                        sheet_name = str(cat)[:31]
-                        df_cat_only.to_excel(writer, sheet_name=sheet_name, index=False)
-                
-                print(f"✅ productos_por_categoria_conteo.xlsx ({len(all_filtered_categories)+1} hojas, {len(df_pconteo):,} registros)")
-            except Exception as e:
-                print(f"❌ Error: {e}")
-
-        # 5. resumen_conteo_clasificacion_final.xlsx (resumen con desglose por método)
+                print(f"❌ Error al guardar productos_por_categoria_conteo: {e}")
+        
+        # 5. resumen_conteo_clasificacion_final.xlsx (resumen consolidado final)
         resumen_final_data = []
         for cat in all_filtered_categories:
-            mask = df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)
-            df_cat = df_consolidado[mask]
-            total_items = len(df_cat)
-            productos_unicos = df_cat['nom_pro'].nunique()
-            metodo_counts = df_cat['metodo_clasificacion'].value_counts().to_dict() if 'metodo_clasificacion' in df_cat.columns else {}
+            total_items = df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x).sum()
+            productos_unicos = len(df_consolidado[df_consolidado['grupos_sustancia_filtrado'].apply(lambda x: cat in x)]['nom_pro'].unique())
             resumen_final_data.append({
                 'categoria': cat,
                 'total_casos': total_items,
-                'productos_unicos': productos_unicos,
-                'por_blacklist': metodo_counts.get('blacklist', 0),
-                'por_deterministic': metodo_counts.get('deterministic', 0),
-                'por_llm': metodo_counts.get('llm', 0),
-                'por_cache': metodo_counts.get('cache', 0),
-                'sin_clasificar': metodo_counts.get('sin_clasificar', 0) + metodo_counts.get('default', 0),
+                'productos_unicos': productos_unicos
             })
+        
         if resumen_final_data:
-            df_rfinal = pd.DataFrame(resumen_final_data)
-            df_rfinal = df_rfinal.sort_values(by='total_casos', ascending=False)
+            df_resumen_final = pd.DataFrame(resumen_final_data)
+            df_resumen_final = df_resumen_final.sort_values(by='total_casos', ascending=False)
+            output_path_resumen_final = os.path.join(self.output_dir, 'resumen_conteo_clasificacion_final.xlsx')
             try:
-                df_rfinal.to_excel(os.path.join(self.output_dir, 'resumen_conteo_clasificacion_final.xlsx'), index=False)
+                df_resumen_final.to_excel(output_path_resumen_final, index=False)
                 print(f"✅ resumen_conteo_clasificacion_final.xlsx")
             except Exception as e:
-                print(f"❌ Error: {e}")
+                print(f"❌ Error al guardar resumen_conteo_clasificacion_final: {e}")
 
 
 def run_pipeline() -> None:
-    """
-    Pipeline organizado de clasificación de sustancias v3.0.
-    
-    Flujo limpio:
-      ETAPA 1: Pre-filtro blacklist → "otros" (method=blacklist)
-      ETAPA 2: Clasificación determinística con regex enriquecido (method=deterministic)
-      ETAPA 3: Cache para items "otros" (method=cache)
-      ETAPA 4: LLM solo para los que siguen como "otros" (method=llm)
-      ETAPA 5: Aplicar al DataFrame + validación vía exposición
-      ETAPA 6: Exportar 5 archivos Excel con columna metodo_clasificacion
-    """
+    """Pipeline optimizado con caché, deterministic, y métricas."""
     try:
-        print("\n" + "━"*70)
-        print("  PIPELINE DE CLASIFICACIÓN DE SUSTANCIAS v3.0")
-        print("  Flujo: Blacklist → Determinístico → LLM (solo 'otros')")
-        print("━"*70)
-        llm_status = 'Habilitado' if ENABLE_LLM else 'Deshabilitado'
-        print(f"  LLM: {llm_status}")
-        print(f"  Cache: {ENABLE_CACHE} | Métricas: {ENABLE_METRICS}")
-
-        metrics = PipelineMetrics() if ENABLE_METRICS else None
-
-        # ── Inicializar componentes ──
-        # LLM se inicializa después de cargar datos (para el contexto de exposición)
-        llm_classifier = None
-
-        cache_mgr = CacheManager(CACHE_DB_PATH, PROMPT_VERSION) if ENABLE_CACHE else None
-        post_filter = PostFilter()
-        validator = Validator()
-        exporter = Exporter(OUTPUT_DIR)
-
-        # ── Cargar datos ──
-        data_loader = DataLoader(file_sheets_map)
-        df_consolidado, _ = data_loader.load()
-
-        total_rows = len(df_consolidado)
-        nombres_unicos = df_consolidado['nom_pro'].unique().tolist()
-        nombres_unicos = [n for n in nombres_unicos if n not in ['otros', 'desconocido']]
-
-        print(f"\n  Total filas: {total_rows:,} | Productos únicos: {len(nombres_unicos):,}")
-
-        # Construir contexto de vía de exposición para el LLM
-        exposure_context = build_exposure_context(df_consolidado, nombres_unicos)
+        print("\n" + "="*70)
+        print("PIPELINE OPTIMIZADO v2.0 - REDUCCIÓN DE COSTOS LLM")
+        print("="*70)
+        print(f"Caché: {ENABLE_CACHE} | Deterministic: {ENABLE_DETERMINISTIC} | Métricas: {ENABLE_METRICS}")
         
-        # Reinicializar clasificador LLM con contexto
+        metrics = PipelineMetrics() if ENABLE_METRICS else None
+        
+        # Inicializar componentes
         llm_classifier = None
         if ENABLE_LLM:
             llm_client = build_llm_client_from_config()
             llm_classifier = DynamicBatchLLMClassifier(
                 llm_client,
                 delay_seconds=LLM_DELAY_SECONDS,
-                budget_chars=LLM_BATCH_BUDGET_CHARS,
-                exposure_context=exposure_context
+                budget_chars=LLM_BATCH_BUDGET_CHARS
             )
-
-        if metrics:
-            metrics.total_nombres = len(nombres_unicos)
-
-        # ── Diccionarios de clasificación ──
-        mapeo_clasificacion: Dict[str, List[str]] = {}
-        mapeo_metodo: Dict[str, str] = {}
-
-        # ================================================================
-        # ETAPA 1: Pre-filtro (blacklist general)
-        # Items que son claramente NO-SPA → "otros"
-        # ================================================================
-        nombres_post_blacklist = []
-        nombres_blacklist = []
-
-        for nombre in nombres_unicos:
-            if is_in_general_blacklist(nombre):
-                mapeo_clasificacion[nombre] = ['otros']
-                mapeo_metodo[nombre] = 'blacklist'
-                nombres_blacklist.append(nombre)
-            else:
-                nombres_post_blacklist.append(nombre)
-
-        if metrics:
-            metrics.filtrados_pre_blacklist = len(nombres_blacklist)
-
-        print(f"\n{'='*80}")
-        print(f"[ETAPA 1] Pre-filtro (blacklist general)")
-        print(f"{'='*80}")
-        print(f"  📊 Total productos: {len(nombres_unicos):,}")
-        print(f"  ✅ Filtrados (blacklist): {len(nombres_blacklist):,} ({100*len(nombres_blacklist)/max(len(nombres_unicos),1):.1f}%)")
-        print(f"  ➡️  Continúan a ETAPA 2: {len(nombres_post_blacklist):,}")
         
-        if nombres_blacklist and len(nombres_blacklist) <= 20:
-            print(f"\n  Productos en blacklist:")
-            for i, prod in enumerate(nombres_blacklist[:20], 1):
-                print(f"     {i:2d}. {prod}")
-        elif nombres_blacklist:
-            print(f"\n  Primeros 10 productos en blacklist:")
-            for i, prod in enumerate(nombres_blacklist[:10], 1):
-                print(f"     {i:2d}. {prod}")
-            print(f"     ... y {len(nombres_blacklist) - 10} más")
+        cache_mgr = None
+        if ENABLE_CACHE:
+            cache_mgr = CacheManager(CACHE_DB_PATH, PROMPT_VERSION)
+        
+        deterministic_clf = None
+        if ENABLE_DETERMINISTIC:
+            deterministic_clf = DeterministicClassifier(use_strong_confidence_only=True)
+        
+        data_loader = DataLoader(file_sheets_map)
+        profiler = Profiler()
+        pre_filter = PreFilter()
+        post_filter = PostFilter()
+        validator = Validator()
+        exporter = Exporter(OUTPUT_DIR)
 
-        blacklist_file = exporter.save_blacklist(nombres_blacklist, df_consolidado)
-        print(f"\n  💾 Lista de blacklist guardada en: {blacklist_file}")
-        print(f"{'='*80}\n")
+        # Cargar datos
+        df_consolidado, _ = data_loader.load()
+        profiler.profile(df_consolidado)
 
-        # ================================================================
-        # ETAPA 2: Clasificación determinística (regex enriquecido)
-        # Usa TODOS los patrones de patterns.py + post-filter de blacklists
-        # Lo que quede como "otros" → pasa al LLM
-        # ================================================================
-        nombres_para_llm = []
-
-        for nombre in nombres_post_blacklist:
-            cats = classify_substance_regex(nombre)
-            cats = post_filter.apply(nombre, cats)
-
-            if cats and cats != ['otros']:
-                mapeo_clasificacion[nombre] = cats
-                mapeo_metodo[nombre] = 'deterministic'
-            else:
-                nombres_para_llm.append(nombre)
-
-        det_count = sum(1 for m in mapeo_metodo.values() if m == 'deterministic')
-
+        nombres_unicos_a_clasificar = df_consolidado['nom_pro'].unique().tolist()
+        nombres_unicos_a_clasificar = [n for n in nombres_unicos_a_clasificar if n not in ['otros', 'desconocido']]
+        
         if metrics:
-            metrics.clasificados_deterministic = det_count
+            metrics.total_nombres = len(nombres_unicos_a_clasificar)
 
-        print(f"{'='*80}")
-        print(f"[ETAPA 2] Clasificación determinística (regex + enriquecido + post-filter)")
-        print(f"{'='*80}")
-        print(f"  ✅ Productos clasificados: {det_count:,} ({100*det_count/max(len(nombres_unicos),1):.1f}%)")
-        print(f"  ➡️  Pendientes para LLM (aún como 'otros'): {len(nombres_para_llm):,} ({100*len(nombres_para_llm)/max(len(nombres_unicos),1):.1f}%)")
-        print(f"{'='*80}\n")
-
-        # ================================================================
-        # ETAPA 3: Cache (para items que van a LLM)
-        # ================================================================
-        nombres_sin_cache = nombres_para_llm
-        cache_count = 0
+        # ETAPA 1: Pre-filtro
+        nombres_para_llm, nombres_otros_directos = pre_filter.apply(nombres_unicos_a_clasificar)
+        if metrics:
+            metrics.filtrados_pre_blacklist = len(nombres_otros_directos)
         
-        print(f"{'='*80}")
-        print(f"[ETAPA 3] Caché persistente")
-        print(f"{'='*80}")
-        
-        if ENABLE_CACHE and cache_mgr and nombres_para_llm:
-            print(f"  🔍 Buscando en caché (versión: {PROMPT_VERSION})...")
-            cache_hits, nombres_sin_cache_raw = cache_mgr.get_batch(nombres_para_llm)
-            print(f"  📊 Cache hits encontrados: {len(cache_hits)}")
+        print(f"\n[ETAPA 1] Pre-filtro (blacklist general):")
+        print(f"  Total: {len(nombres_unicos_a_clasificar)}")
+        print(f"  → Filtrados: {len(nombres_otros_directos)}")
+        print(f"  → Continúan: {len(nombres_para_llm)}")
 
-            # Post-filtrar resultados del cache
-            recheck = []
-            for nom, cats in cache_hits.items():
-                cats_filtered = post_filter.apply(nom, cats)
-                if cats_filtered and cats_filtered != ['otros']:
-                    mapeo_clasificacion[nom] = cats_filtered
-                    mapeo_metodo[nom] = 'cache'
-                    cache_count += 1
-                else:
-                    recheck.append(nom)
+        exporter.save_blacklist(nombres_otros_directos, df_consolidado)
+        mapeo_llm: Dict[str, List[str]] = {nombre: ['otros'] for nombre in nombres_otros_directos}
 
-            nombres_sin_cache = list(nombres_sin_cache_raw) + recheck
-
+        # ETAPA 2: Deterministic
+        nombres_ambiguos = nombres_para_llm
+        if ENABLE_DETERMINISTIC and deterministic_clf:
+            print(f"\n[ETAPA 2] Deterministic classifier (regex alta confianza):")
+            deterministic_results = deterministic_clf.classify_batch(nombres_para_llm)
+            nombres_ambiguos = deterministic_clf.get_unclassified(nombres_para_llm)
+            
             if metrics:
-                metrics.recuperados_cache = cache_count
+                metrics.clasificados_deterministic = len(deterministic_results)
+            
+            mapeo_llm.update(deterministic_results)
+            print(f"  → Clasificados: {len(deterministic_results)}")
+            print(f"  → Quedan ambiguos: {len(nombres_ambiguos)}")
 
-            print(f"  ✅ Cache hits útiles: {cache_count}")
-            print(f"  ➡️  Pendientes para LLM: {len(nombres_sin_cache):,}")
-        else:
-            cache_status = 'Deshabilitado' if not ENABLE_CACHE else 'Sin items pendientes'
-            print(f"  ℹ️  Caché: {cache_status}")
-        
-        print(f"{'='*80}\n")
+        # ETAPA 3: Cache
+        nombres_sin_cache = nombres_ambiguos
+        if ENABLE_CACHE and cache_mgr:
+            print(f"\n[ETAPA 3] Caché persistente (v={PROMPT_VERSION}):")
+            cache_hits, nombres_sin_cache = cache_mgr.get_batch(nombres_ambiguos)
+            
+            if metrics:
+                metrics.recuperados_cache = len(cache_hits)
+            
+            mapeo_llm.update(cache_hits)
+            print(f"  → Cache hits: {len(cache_hits)}")
+            print(f"  → Sin caché: {len(nombres_sin_cache)}")
 
-        # ================================================================
-        # ETAPA 4: LLM (SOLO para los que quedaron como "otros")
-        # Si LLM deshabilitado, quedan como "otros" / "sin_clasificar"
-        # ================================================================
+        # ETAPA 4: LLM (o fallback regex si LLM deshabilitado)
         if nombres_sin_cache:
             if ENABLE_LLM and llm_classifier:
-                print(f"{'='*80}")
-                print(f"[ETAPA 4] Clasificación LLM (DeepSeek)")
-                print(f"{'='*80}")
-                print(f"  📧 Procesando {len(nombres_sin_cache):,} productos con DeepSeek API")
-                print(f"  ⏱️  (Este proceso puede tomar tiempo según cantidad de productos)")
-                print(f"{'='*80}\n")
-
+                print(f"\n[ETAPA 4] Clasificación LLM (DeepSeek):")
                 if metrics:
                     metrics.enviados_llm = len(nombres_sin_cache)
-
-                llm_results = llm_classifier.classify_batch(nombres_sin_cache)
                 
-                print(f"\n✅ LLM completó la clasificación")
-                print(f"{'='*80}")
-                print(f"  📊 Resultados LLM:")
-                print(f"     Productos procesados: {len(llm_results):,}")
-
-                for nom, cats in llm_results.items():
-                    cats_filtered = post_filter.apply(nom, cats)
-                    mapeo_clasificacion[nom] = cats_filtered
-                    mapeo_metodo[nom] = 'llm'
-
+                mapeo_llm_nuevo = llm_classifier.classify_batch(nombres_sin_cache)
+                mapeo_llm.update(mapeo_llm_nuevo)
+                
                 if ENABLE_CACHE and cache_mgr:
-                    cache_mgr.set_batch(llm_results)
-                    print(f"     ✅ Guardados en caché: {len(llm_results)}")
-
-                print(f"{'='*80}\n")
+                    cache_mgr.set_batch(mapeo_llm_nuevo)
+                    print(f"  → Guardados en caché: {len(mapeo_llm_nuevo)}")
+                
+                if llm_classifier.incidencias:
+                    print(f"\n  Incidencias:")
+                    for inc_type, count in llm_classifier.incidencias.items():
+                        print(f"    - {inc_type}: {count}")
             else:
-                print(f"{'='*80}")
-                print(f"[ETAPA 4] LLM deshabilitado")
-                print(f"{'='*80}")
-                print(f"  ⚠️  {len(nombres_sin_cache):,} productos quedan clasificados como 'otros'")
-                for nombre in nombres_sin_cache:
-                    mapeo_clasificacion[nombre] = ['otros']
-                    mapeo_metodo[nombre] = 'sin_clasificar'
-                print(f"{'='*80}\n")
+                print(f"\n[ETAPA 4] LLM DESHABILITADO: usando regex para {len(nombres_sin_cache)} items")
+                mapeo_llm_nuevo = {clean_text(n): classify_substance_regex(n) for n in nombres_sin_cache}
+                mapeo_llm.update(mapeo_llm_nuevo)
         else:
-            print(f"\n{'='*80}")
-            print(f"[ETAPA 4] LLM: Omitido")
-            print(f"{'='*80}")
-            print(f"  ✅ Todos los productos ya fueron clasificados en etapas previas")
-            print(f"{'='*80}\n")
+            print(f"\n[ETAPA 4] LLM: OMITIDO (todos en caché/deterministic)")
 
         if metrics:
-            metrics.llm_calls_saved = len(nombres_blacklist) + det_count + cache_count
+            metrics.llm_calls_saved = (
+                len(nombres_otros_directos) +
+                (len(deterministic_results) if ENABLE_DETERMINISTIC else 0) +
+                (len(cache_hits) if ENABLE_CACHE else 0)
+            )
 
-        # ================================================================
-        # ETAPA 5: Aplicar clasificaciones al DataFrame completo
-        # ================================================================
-        print(f"{'='*80}")
-        print(f"[ETAPA 5] Aplicando clasificaciones al DataFrame")
-        print(f"{'='*80}")
-        print(f"  📝 Aplicando clasificaciones a {total_rows:,} filas de datos...")
+        # ETAPA 5: Post-filtro y validación
+        print(f"\n[ETAPA 5] Post-filtro y validación...")
 
-        def get_clasificacion(nom_pro):
+        def get_final_classification(nom_pro: str) -> List[str]:
             if nom_pro in ['otros', 'desconocido']:
                 return ['otros']
-            return mapeo_clasificacion.get(nom_pro, ['otros'])
+            if is_in_general_blacklist(nom_pro):
+                return ['otros']
 
-        def get_metodo(nom_pro):
-            if nom_pro in ['otros', 'desconocido']:
-                return 'default'
-            return mapeo_metodo.get(nom_pro, 'default')
+            llm_cats = mapeo_llm.get(nom_pro, ['otros'])
+            if llm_cats == ['otros'] or not llm_cats:
+                cats = classify_substance_regex(nom_pro)
+            else:
+                cats = llm_cats
 
-        df_consolidado['grupos_sustancia_final'] = df_consolidado['nom_pro'].apply(get_clasificacion)
-        df_consolidado['metodo_clasificacion'] = df_consolidado['nom_pro'].apply(get_metodo)
-        
-        print(f"  ✅ Columnas agregadas: 'grupos_sustancia_final', 'metodo_clasificacion'")
+            cats = post_filter.apply(nom_pro, cats)
+            return cats if cats else ['otros']
 
-        # Validación por vía de exposición
-        print(f"  🔍 Validando con vía de exposición (removiendo inhalantes no-respiratorios, etc.)...")
-        df_consolidado['grupos_sustancia_filtrado'] = df_consolidado.apply(validator.apply, axis=1)
-        print(f"  ✅ Validación completada")
+        df_consolidado['grupos_sustancia_final'] = df_consolidado['nom_pro'].apply(get_final_classification)
 
-        # Columnas binarias por categoría
-        all_cats = set(cat for sublist in df_consolidado['grupos_sustancia_filtrado'] for cat in sublist)
-        for cat in all_cats:
-            df_consolidado[f'es_{cat}'] = df_consolidado['grupos_sustancia_filtrado'].apply(
-                lambda x, c=cat: 1 if c in x else 0
+        all_final_categories = set(cat for sublist in df_consolidado['grupos_sustancia_final'] for cat in sublist)
+        for cat in all_final_categories:
+            df_consolidado[f'es_{cat}'] = df_consolidado['grupos_sustancia_final'].apply(
+                lambda x: 1 if cat in x else 0
             )
-        
-        print(f"  ✅ Columnas binarias creadas para {len(all_cats)} categorías")
-        print(f"{'='*80}\n")
 
-        # ================================================================
-        # ETAPA 6: Exportar resultados
-        # ================================================================
-        print(f"{'='*80}")
-        print(f"[ETAPA 6] Exportando resultados")
-        print(f"{'='*80}")
-        print(f"  📁 Destino: {OUTPUT_DIR}")
-        print(f"  📊 Datos a exportar: {total_rows:,} filas, {len(all_cats)} categorías")
-        
+        df_consolidado['grupos_sustancia_filtrado'] = df_consolidado.apply(validator.apply, axis=1)
+
+        # ETAPA 6: Exportar
+        print(f"\n[ETAPA 6] Exportando resultados...")
         exporter.save_outputs(df_consolidado)
-        
-        print(f"  ✅ Exportación completada")
-        print(f"{'='*80}\n")
 
-        # ── Métricas finales ──
+        # Métricas finales
         if ENABLE_METRICS and metrics:
-            total = len(df_consolidado)
+            total_rows = len(df_consolidado)
             otros_count = df_consolidado['grupos_sustancia_final'].apply(lambda x: 'otros' in x).sum()
-            metrics.tasa_otros_final = otros_count / total if total > 0 else 0
-
-            # Resumen de métodos por filas
-            print(f"\n{'━'*80}")
-            print(f"  RESUMEN DE MÉTODOS DE CLASIFICACIÓN (por filas)")
-            print(f"{'━'*80}")
-            method_counts = df_consolidado['metodo_clasificacion'].value_counts()
-            for method, count in method_counts.items():
-                pct = 100 * count / total
-                print(f"  {method:20s}: {count:>8,} filas ({pct:.1f}%)")
-
-            # Resumen de métodos por productos únicos
-            print(f"\n  Por productos únicos:")
-            metodo_series = pd.Series(mapeo_metodo)
-            for method, count in metodo_series.value_counts().items():
-                pct = 100 * count / max(len(nombres_unicos), 1)
-                print(f"  {method:20s}: {count:>6,} productos ({pct:.1f}%)")
-
+            metrics.tasa_otros_final = otros_count / total_rows if total_rows > 0 else 0
             metrics.report()
 
-        print(f"\n{'━'*70}")
-        print(f"  ✅ PIPELINE COMPLETADO")
-        print(f"{'━'*70}\n")
+        print("\n" + "="*70)
+        print("✅ PIPELINE COMPLETADO")
+        print("="*70 + "\n")
 
     except Exception as e:
         print(f"\n❌ Error crítico: {e}")
         import traceback
         traceback.print_exc()
         raise
-
 
 
 # =========================================================
