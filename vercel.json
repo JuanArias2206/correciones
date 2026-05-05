@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "cd dashboard-resultados && npm install && npm run build",
+  "outputDirectory": "dashboard-resultados/dist",
+  "installCommand": "cd dashboard-resultados && npm install",
+  "framework": "vite",
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
