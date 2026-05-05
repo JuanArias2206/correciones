@@ -140,12 +140,16 @@ Reglas:
 // ─── COMPONENTE ────────────────────────────────────────────────────────────
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const DEFAULT_API_KEY = 'sk-90b9c21e412447b188162cab53fad814';
+
   const getInitialApiKey = () => {
     const envKey = import.meta.env?.VITE_DEEPSEEK_API_KEY;
     if (envKey) return envKey;
     const localKey = localStorage.getItem('deepseek_api_key');
     if (localKey) return localKey;
-    return sessionStorage.getItem('deepseek_api_key') || '';
+    const sessionKey = sessionStorage.getItem('deepseek_api_key');
+    if (sessionKey) return sessionKey;
+    return DEFAULT_API_KEY;
   };
 
   const [apiKey, setApiKey] = useState(getInitialApiKey);
