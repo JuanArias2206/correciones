@@ -2,118 +2,159 @@ import React, { useState, useRef, useEffect } from 'react';
 import {
   kpis, sustancias, intencionalidad, sexo, sustanciasPorIntencionalidad,
   sustanciaSexo, productosTodos, conteoCategorias, productosPorCategoria,
-  productosBlacklist
+  productosBlacklist, baseCompleta
 } from '../data/data';
 
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
 
-// ─── DATOS LOCALES: índices para búsqueda rápida ───────────────────────────
-const ALL_DATA = {
-  kpis, sustancias, intencionalidad, sexo,
-  sustanciasPorIntencionalidad, sustanciaSexo,
-  productosTodos, conteoCategorias, productosPorCategoria,
-  productosBlacklist
-};
-
-// Mapa de categorías → productos (completo, no solo top 5)
+// ─── ÍNDICE: productos por categoría ──────────────────────────────────────
 const productosPorCat = {};
 productosTodos.forEach(p => {
   if (!productosPorCat[p.categoria]) productosPorCat[p.categoria] = [];
   productosPorCat[p.categoria].push(p);
 });
-// Pre-ordenar cada categoría por conteo descendente
 Object.keys(productosPorCat).forEach(cat => {
   productosPorCat[cat].sort((a, b) => b.conteo - a.conteo);
 });
 
-// Set de todas las palabras clave conocidas (categorías + productos + sustancias)
-const keywords = new Set();
-sustancias.forEach(s => keywords.add(s.sustancia.toLowerCase()));
-productosTodos.forEach(p => {
-  keywords.add(p.producto.toLowerCase());
-  keywords.add(p.categoria.toLowerCase());
+// ─── ÍNDICE: productos por categoría + sexo (desde baseCompleta) ──────────
+const prodCatSexo = {}; // { "cat|F": { "producto": count } }
+baseCompleta.forEach(r => {
+  const cat = r.grupos_sustancia_final;
+  const prod = r.nom_pro;
+  const s = r.sexo;
+  if (!cat || cat === 'nan' || !prod || prod === 'nan' || !s) return;
+  const key = `${cat}|${s}`;
+  if (!prodCatSexo[key]) prodCatSexo[key] = {};
+  prodCatSexo[key][prod] = (prodCatSexo[key][prod] || 0) + 1;
 });
-sexo.forEach(s => keywords.add(s.sexo.toLowerCase()));
-intencionalidad.forEach(i => keywords.add(i.intencionalidad.toLowerCase()));
+
+// ─── ÍNDICE: productos por categoría + intencionalidad ────────────────────
+const prodCatIntenc = {}; // { "cat|intencional": { "producto": count } }
+baseCompleta.forEach(r => {
+  const cat = r.grupos_sustancia_final;
+  const prod = r.nom_pro;
+  const i = r.intencionalidad;
+  if (!cat || cat === 'nan' || !prod || prod === 'nan' || !i) return;
+  const key = `${cat}|${i}`;
+  if (!prodCatIntenc[key]) prodCatIntenc[key] = {};
+  prodCatIntenc[key][prod] = (prodCatIntenc[key][prod] || 0) + 1;
+});
+
+// Helper: obtener top N productos de un mapa { prod: count }
+const topFromMap = (map, n = 20) => {
+  return Object.entries(map)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, n)
+    .map(([prod, count]) => `${prod}: ${count}`)
+    .join(', ');
+};
+
+// Helper: match de categoría flexible (por palabra)
+const matchCategory = (cat, query) => {
+  const q = query.toLowerCase();
+  const c = cat.toLowerCase();
+  if (q.includes(c)) return true;
+  // Separar por guiones bajos
+  const words = c.split('_');
+  return words.some(w => w.length > 2 && q.includes(w));
+};
 
 // ─── BÚSQUEDA LOCAL INTELIGENTE ────────────────────────────────────────────
 const searchLocalData = (userQuery) => {
   const query = userQuery.toLowerCase();
   const results = [];
 
-  // 1. Buscar categorías mencionadas
+  // Determinar si pregunta por sexo
+  const asksSexo = query.includes('sexo') || query.includes('femenino') || query.includes('masculino')
+    || query.includes('hombre') || query.includes('mujer') || query.includes('mujeres')
+    || query.includes('hombres') || /\bf\b/.test(query) || /\bm\b/.test(query);
+
+  // Determinar sexo específico
+  const askF = asksSexo && (query.includes('femenino') || query.includes('mujer') || /\bf\b/.test(query));
+  const askM = asksSexo && (query.includes('masculino') || query.includes('hombre') || /\bm\b/.test(query));
+  const targetSex = askF ? 'F' : (askM ? 'M' : null);
+
+  // Determinar si pregunta por intencionalidad
+  const asksIntenc = query.includes('intencional') || query.includes('accidental')
+    || query.includes('voluntario') || query.includes('deliberado');
+  const askIntenc = asksIntenc && query.includes('intencional');
+  const askNoIntenc = asksIntenc && (query.includes('no intencional') || query.includes('accidental'));
+
+  // 1. Buscar categorías mencionadas (flexible)
   const categoriasMencionadas = [...new Set(productosTodos.map(p => p.categoria))]
-    .filter(cat => query.includes(cat.toLowerCase()) || query.includes(cat.replace(/_/g, ' ').toLowerCase()));
+    .filter(cat => matchCategory(cat, query));
 
   // 2. Buscar productos específicos mencionados
   const productosMencionados = productosTodos.filter(p =>
     query.includes(p.producto.toLowerCase())
   );
 
-  // 3. Si menciona alguna categoría, incluir sus productos top 20
+  // 3. Por cada categoría mencionada, incluir top productos
   categoriasMencionadas.forEach(cat => {
-    const prods = productosPorCat[cat] || [];
-    const totalCat = prods.reduce((sum, p) => sum + (p.conteo || 0), 0);
-    const top20 = prods.slice(0, 20).map(p => `${p.producto}: ${p.conteo}`).join(', ');
-    results.push(`CATEGORÍA "${cat}" (${prods.length} productos únicos, ${totalCat} registros totales):
-Top 20: ${top20}`);
+    if (targetSex) {
+      // Productos filtrados por categoría + sexo desde baseCompleta
+      const key = `${cat}|${targetSex}`;
+      const map = prodCatSexo[key];
+      if (map && Object.keys(map).length > 0) {
+        const total = Object.values(map).reduce((a, b) => a + b, 0);
+        results.push(`PRODUCTOS EN "${cat}" PARA SEXO ${targetSex === 'F' ? 'FEMENINO' : 'MASCULINO'} (${Object.keys(map).length} productos, ${total} registros):\n${topFromMap(map, 25)}`);
+      }
+      // También ambos sexos para comparación
+      if (askF || !askM) {
+        const keyM = `${cat}|M`;
+        const mapM = prodCatSexo[keyM];
+        if (mapM) results.push(`(Comparación: ${cat} en M: ${Object.values(mapM).reduce((a,b)=>a+b,0)} registros)`);
+      }
+      if (askM || !askF) {
+        const keyF = `${cat}|F`;
+        const mapF = prodCatSexo[keyF];
+        if (mapF) results.push(`(Comparación: ${cat} en F: ${Object.values(mapF).reduce((a,b)=>a+b,0)} registros)`);
+      }
+    } else {
+      // Productos generales (sin filtrar por sexo)
+      const prods = productosPorCat[cat] || [];
+      const totalCat = prods.reduce((sum, p) => sum + (p.conteo || 0), 0);
+      results.push(`CATEGORÍA "${cat}" (${prods.length} productos únicos, ${totalCat} registros):\nTop 25: ${prods.slice(0, 25).map(p => `${p.producto}: ${p.conteo}`).join(', ')}`);
+    }
   });
 
-  // 4. Si pregunta por sexo
-  if (query.includes('sexo') || query.includes('femenino') || query.includes('masculino') || query.includes('hombre') || query.includes('mujer') || query.includes('f ') || query.includes('m ')) {
+  // 4. Si pregunta por sexo, incluir datos generales
+  if (asksSexo) {
     const sexoData = sustanciaSexo.map(s =>
       `${s.sustancia}: F=${s.F}, M=${s.M} (total=${Number(s.F)+Number(s.M)})`
     ).join('\n');
-    results.push('DATOS COMPLETOS SUSTANCIA × SEXO:\n' + sexoData);
+    results.push('DATOS SUSTANCIA × SEXO:\n' + sexoData);
   }
 
   // 5. Si pregunta por intencionalidad
-  if (query.includes('intencional') || query.includes('accidental') || query.includes('voluntario') || query.includes('deliberado')) {
+  if (asksIntenc) {
     const intData = sustanciasPorIntencionalidad.map(s =>
       `${s.sustancia}: total=${s.total}, intencional=${s.intencional} (${s.porcentaje_intencional}%), no_intencional=${s.no_intencional} (${s.porcentaje_no_intencional}%)`
     ).join('\n');
-    results.push('DATOS COMPLETOS SUSTANCIA × INTENCIONALIDAD:\n' + intData);
+    results.push('DATOS SUSTANCIA × INTENCIONALIDAD:\n' + intData);
   }
 
-  // 6. Si pregunta por productos específicos mencionados (con contexto)
+  // 6. Productos específicos mencionados
   productosMencionados.forEach(p => {
     results.push(`PRODUCTO "${p.producto}": categoría=${p.categoria}, conteo=${p.conteo}, método=${p.metodo_clasificacion}`);
   });
 
-  // 7. Si pregunta por blacklist
+  // 7. Blacklist
   if (query.includes('blacklist') || query.includes('filtrado') || query.includes('bloqueado')) {
-    const blData = productosBlacklist.slice(0, 20).map(b =>
-      `${b.nombre_producto}: ${b.razon} (frecuencia: ${b.frecuencia})`
-    ).join('\n');
-    results.push('PRODUCTOS EN BLACKLIST (top 20):\n' + blData);
+    const blData = productosBlacklist.slice(0, 20).map(b => `${b.nombre_producto}: ${b.razon} (frecuencia: ${b.frecuencia})`).join('\n');
+    results.push('BLACKLIST (top 20):\n' + blData);
   }
 
-  // 8. Si pregunta por top/ranking
+  // 8. Top / ranking global
   if (query.includes('top') || query.includes('ranking') || query.includes('más usad') || query.includes('mas usad') || query.includes('mas frecuente') || query.includes('más frecuente') || query.includes('primer') || query.includes('segundo') || query.includes('tercer')) {
-    const topGlobal = productosTodos
-      .sort((a, b) => b.conteo - a.conteo)
-      .slice(0, 30)
-      .map(p => `${p.producto} (${p.categoria}): ${p.conteo}`)
-      .join('\n');
+    const topGlobal = productosTodos.sort((a, b) => b.conteo - a.conteo).slice(0, 30).map(p => `${p.producto} (${p.categoria}): ${p.conteo}`).join('\n');
     results.push('TOP 30 PRODUCTOS GLOBALES:\n' + topGlobal);
   }
 
-  // 9. Si pregunta por conteo general
-  if (query.includes('total') || query.includes('cuántos') || query.includes('cuantos') || query.includes('resumen') || query.includes('general')) {
-    results.push(`RESUMEN GENERAL:
-- Total registros: ${kpis.total_registros}
-- Intencionales: ${kpis.intencional} (${kpis.pct_intencional}%)
-- No intencionales: ${kpis.no_intencional} (${kpis.pct_no_intencional}%)
-- Femenino: ${kpis.sexo_f} registros
-- Masculino: ${kpis.sexo_m} registros
-- Categorías: ${kpis.categorias_detectadas}
-- Top sustancias: ${sustancias.slice(0,5).map(s=>s.sustancia+':'+s.numero_registros).join(', ')}`);
-  }
-
-  // 10. Siempre incluir KPIs base + top sustancias para contexto mínimo
+  // 9. Contexto base siempre
   const baseContext = `KPIs: ${kpis.total_registros} registros, ${kpis.intencional} intencionales, ${kpis.no_intencional} no intencionales, F=${kpis.sexo_f}, M=${kpis.sexo_m}.
-Top sustancias: ${sustancias.slice(0,5).map(s=>`${s.sustancia}:${s.numero_registros}`).join(', ')}.
-Categorías: ${conteoCategorias.map(c=>`${c.categoria}:${c.conteo}`).join(', ')}.`;
+Top sustancias: ${sustancias.slice(0,5).map(s=>`${s.sustancia}:${s.numero_registros}`).join(', ')}.`;
 
   return baseContext + '\n\n' + results.join('\n\n');
 };
