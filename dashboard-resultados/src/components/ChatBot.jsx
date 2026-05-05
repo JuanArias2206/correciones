@@ -118,23 +118,67 @@ Categorías: ${conteoCategorias.map(c=>`${c.categoria}:${c.conteo}`).join(', ')}
   return baseContext + '\n\n' + results.join('\n\n');
 };
 
-// ─── SYSTEM PROMPT BASE ────────────────────────────────────────────────────
+// ─── FORMATO MARKDOWN BÁSICO ─────────────────────────────────────
+const formatMarkdown = (text) => {
+  // Escapar HTML primero para seguridad
+  let html = text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
+  // **negrita**
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+  // Saltos de línea dobles → párrafos
+  const paragraphs = html.split('\n\n');
+  html = paragraphs.map(p => {
+    // Detectar listas numeradas
+    const lines = p.split('\n');
+    const isNumberedList = lines.every(l => /^\d+\.\s/.test(l.trim()) || l.trim() === '');
+    const isBulletList = lines.every(l => /^[-•]\s/.test(l.trim()) || l.trim() === '');
+
+    if (isNumberedList && lines.length > 1) {
+      const items = lines
+        .filter(l => /^\d+\.\s/.test(l.trim()))
+        .map(l => `<li>${l.replace(/^\d+\.\s/, '')}</li>`)
+        .join('');
+      return `<ol>${items}</ol>`;
+    }
+
+    if (isBulletList && lines.length > 1) {
+      const items = lines
+        .filter(l => /^[-•]\s/.test(l.trim()))
+        .map(l => `<li>${l.replace(/^[-•]\s/, '')}</li>`)
+        .join('');
+      return `<ul>${items}</ul>`;
+    }
+
+    // Si una línea empieza con número + punto, envolver en span
+    return lines.map(l => {
+      if (/^\d+\.\s/.test(l.trim())) {
+        return `<span class="chat-numbered">${l}</span>`;
+      }
+      return l;
+    }).join('<br/>');
+  }).join('</p><p>');
+
+  return `<p>${html}</p>`;
+};
 const buildSystemPrompt = () => {
   return `Eres un asistente experto en análisis epidemiológico y toxicológico de sustancias. Trabajas con datos reales del sistema SIVIGILA de notificación obligatoria en Colombia.
 
 Tus capacidades:
 - Analizar y comparar datos de clasificación de sustancias, productos, sexo e intencionalidad.
-- Responder con precisión basándote en los datos que se te proporcionan.
-- Dar rankings, conteos, porcentajes y comparaciones.
-- Interpretar patrones epidemiológicos.
+- Dar rankings, conteos, porcentajes y comparaciones precisas.
 
-Reglas:
-1. Usa SOLO los datos que aparecen en el contexto del mensaje del usuario. NUNCA inventes cifras ni productos.
-2. Si la información para responder no está en el contexto proporcionado, dilo claramente.
-3. Responde SIEMPRE en español, de forma concisa pero completa.
-4. Usa formato de lista cuando enumeres varios items.
-5. Incluye cifras exactas (conteos) cuando estén disponibles.
-6. Puedes calcular porcentajes, diferencias y proporciones con los datos dados.`;
+Reglas de estilo y formato:
+1. Usa SOLO los datos del contexto. NUNCA inventes cifras.
+2. Responde en español, de forma concisa pero completa.
+3. IMPORTANTE: Para listas numeradas usa el formato "1. item" (número + punto + espacio).
+4. Para texto destacado usa **negrita** con doble asterisco.
+5. Separa párrafos con doble salto de línea.
+6. Incluye cifras exactas con formato legible (ej: 27,006 en vez de 27006).
+7. Si puedes dar un ranking, hazlo en lista numerada.`;
 };
 
 // ─── COMPONENTE ────────────────────────────────────────────────────────────
@@ -155,7 +199,7 @@ const ChatBot = () => {
   const [apiKey, setApiKey] = useState(getInitialApiKey);
   const [showConfig, setShowConfig] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: '¡Hola! Soy tu asistente de análisis para los datos de clasificación de sustancias. Puedo consultar todas las categorías, productos, sexo e intencionalidad en tiempo real.\n\nPrueba preguntarme cosas como:\n• "¿Cuál es el producto más usado en medicamentos_no_SPA?"\n• "Compara cocaína vs alcohol por sexo"\n• "Top 10 productos más frecuentes"\n• "¿Qué diferencia hay entre intencional y no intencional en opioides?"' }
+    { role: 'assistant', content: '¡Hola! Soy tu asistente de análisis. Pregúntame cualquier cosa sobre los datos de clasificación de sustancias.\n\n**Ejemplos de lo que puedo hacer:**\n\n1. ¿Cuál es el producto más usado en medicamentos_no_SPA?\n2. Compara cocaína vs alcohol por sexo\n3. Top 10 productos más frecuentes\n4. ¿Qué diferencia hay entre intencional y no intencional en opioides?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -326,15 +370,22 @@ Responde la pregunta del usuario basándote en los datos anteriores. Sé preciso
               <div key={idx} style={{
                 alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
                 maxWidth: '90%',
-                background: msg.role === 'user' ? '#2563eb' : 'white',
+                background: msg.role === 'user' ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : '#ffffff',
                 color: msg.role === 'user' ? 'white' : '#1f2937',
-                padding: '0.75rem 1rem',
-                borderRadius: msg.role === 'user' ? '1rem 1rem 0.25rem 1rem' : '1rem 1rem 1rem 0.25rem',
-                fontSize: '0.875rem', lineHeight: 1.6,
-                boxShadow: '0 1px 2px rgba(0,0,0,0.08)',
-                whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+                padding: '0.75rem 1.1rem',
+                borderRadius: msg.role === 'user' ? '1.1rem 1.1rem 0.3rem 1.1rem' : '1.1rem 1.1rem 1.1rem 0.3rem',
+                fontSize: '0.875rem', lineHeight: 1.65,
+                boxShadow: '0 1px 3px rgba(0,0,0,0.07)',
+                wordBreak: 'break-word',
               }}>
-                {msg.content}
+                {msg.role === 'assistant' ? (
+                  <div
+                    className="chat-message-content"
+                    dangerouslySetInnerHTML={{ __html: formatMarkdown(msg.content) }}
+                  />
+                ) : (
+                  <span style={{ whiteSpace: 'pre-wrap' }}>{msg.content}</span>
+                )}
               </div>
             ))}
             {loading && (

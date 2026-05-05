@@ -506,6 +506,16 @@ tbody tr:last-child td { border-bottom: none; }
 .recharts-pie-sector { cursor: pointer; transition: opacity 0.18s ease; }
 .recharts-pie-sector:hover { opacity: 0.85; }
 
+/* ─── CHAT MESSAGE CONTENT ───────────────────────────────────── */
+.chat-message-content p { margin: 0 0 0.4rem 0; }
+.chat-message-content p:last-child { margin-bottom: 0; }
+.chat-message-content strong { font-weight: 700; color: #1e40af; }
+.chat-message-content ol,
+.chat-message-content ul { margin: 0.25rem 0; padding-left: 1.3rem; }
+.chat-message-content ol li,
+.chat-message-content ul li { margin-bottom: 0.15rem; font-size: 0.85rem; }
+.chat-message-content .chat-numbered { display: block; font-weight: 500; margin: 0.1rem 0; }
+
 /* ─── FOOTER ─────────────────────────────────────────────── */
 .dashboard-footer {
   margin-top: 3.5rem; padding: 1.5rem;
