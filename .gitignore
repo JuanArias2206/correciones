@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+
+# Entorno local (contiene API keys)
+src/config_local.py
+
+# Datos de entrada (archivos grandes)
+data/*.xlsx
+
+# Salidas generadas (se regeneran corriendo el pipeline)
+outputs/
+runs/
+cache/
+logs/
+
+# Temporales de Office
+~$*.xlsx
+~$*.docx
+
+# Logs sueltos
+*.log
