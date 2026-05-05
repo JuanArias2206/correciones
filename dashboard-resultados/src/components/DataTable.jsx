@@ -23,10 +23,16 @@ const DataTable = ({
 
   const handleSort = (key) => {
     if (sortColumn === key) {
-      setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+      // Ciclo: asc -> desc -> sin orden
+      if (sortDirection === 'asc') {
+        setSortDirection('desc');
+      } else {
+        setSortColumn(null);
+        setSortDirection('asc');
+      }
     } else {
       setSortColumn(key);
-      setSortDirection('desc');
+      setSortDirection('asc');
     }
     setCurrentPage(1);
   };
@@ -39,6 +45,8 @@ const DataTable = ({
   const clearFilters = () => {
     setFilters({});
     setSearch('');
+    setSortColumn(null);
+    setSortDirection('asc');
     setCurrentPage(1);
   };
 
@@ -107,8 +115,22 @@ const DataTable = ({
   };
 
   const getSortIcon = (key) => {
-    if (sortColumn !== key) return '↕';
-    return sortDirection === 'asc' ? '↑' : '↓';
+    if (sortColumn !== key) {
+      return (
+        <span style={{ color: '#d1d5db', fontSize: '0.75rem', marginLeft: '0.25rem' }} title="Click para ordenar ascendente">
+          ⇅
+        </span>
+      );
+    }
+    return sortDirection === 'asc' ? (
+      <span style={{ color: '#2563eb', fontSize: '0.85rem', marginLeft: '0.25rem', fontWeight: 700 }} title="Orden ascendente. Click para descendente">
+        ▲
+      </span>
+    ) : (
+      <span style={{ color: '#2563eb', fontSize: '0.85rem', marginLeft: '0.25rem', fontWeight: 700 }} title="Orden descendente. Click para quitar orden">
+        ▼
+      </span>
+    );
   };
 
   return (
@@ -145,6 +167,11 @@ const DataTable = ({
 
       <div style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>
         Mostrando {filteredData.length} registros
+        {sortColumn && (
+          <span style={{ marginLeft: '0.5rem', fontWeight: 600, color: '#2563eb' }}>
+            · Ordenado por "{columns.find(c => c.key === sortColumn)?.label || sortColumn}" ({sortDirection === 'asc' ? 'ascendente' : 'descendente'})
+          </span>
+        )}
       </div>
 
       <div className="table-container">
@@ -152,7 +179,11 @@ const DataTable = ({
           <thead>
             <tr>
               {columns.map((col) => (
-                <th key={col.key} onClick={() => handleSort(col.key)}>
+                <th
+                  key={col.key}
+                  onClick={() => handleSort(col.key)}
+                  style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}
+                >
                   {col.label} {getSortIcon(col.key)}
                 </th>
               ))}
