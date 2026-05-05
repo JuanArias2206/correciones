@@ -1,0 +1,12 @@
+{
+  "fecha_generacion": "2026-05-05T06:35:05.631967",
+  "archivos_procesados": [
+    "analisis_resultados.xlsx",
+    "productos_filtrados_blacklist.xlsx",
+    "productos_por_categoria.xlsx",
+    "productos_por_categoria_conteo.xlsx",
+    "resultados_clasificacion_llm_avanzada.xlsx",
+    "resumen_clasificacion_avanzada.xlsx",
+    "resumen_conteo_clasificacion_final.xlsx"
+  ]
+}

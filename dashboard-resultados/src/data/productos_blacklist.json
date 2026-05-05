@@ -1,0 +1,2444 @@
+[
+  {
+    "nombre_producto": "clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1429,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito de sodio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1071,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 802,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 669,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 342,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 326,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 292,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 290,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "monoxido de carbono",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 247,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gramoxone",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 225,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 175,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas pimienta",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 163,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "el sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 160,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergente",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 149,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "productos de limpieza",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 119,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 119,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 104,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 103,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "desengrasante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 99,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "soda caustica",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 96,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gramafin",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 90,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas propano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 83,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "humo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 81,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 80,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro acido muriatico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 74,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mezcla de plaguicidas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 70,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas natural",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 65,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 59,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rafaga",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 56,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "malathion",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 56,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rodenticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 54,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorban",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 53,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mata rata baygon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 53,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 53,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido muriatico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 52,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato 77 sg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 49,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "tronador",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 48,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 46,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido nitrico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 45,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro granulado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 43,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "agroquimicos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 43,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fertilizantes",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 37,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "supermetrilina - plaguicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 35,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas lacrimogeno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 31,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban 4 ec",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 29,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon liquido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 28,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban 2.5 dp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 27,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas metano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 26,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "brodifacouma",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 26,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amoniaco",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 25,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bromadiolona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 24,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "brodifacoum",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 23,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "super campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 23,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 23,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato rainbow 747 sg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 22,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido sulfurico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 22,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "dioxido de carbono",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 22,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "diablo rojo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 22,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroxido de sodio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 21,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido clorhidrico acido nitrico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 20,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat + diquat",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 19,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "malation",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 18,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas de mina de carbon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 17,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas liquido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 17,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gramoxone sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 16,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 16,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon verde",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 16,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido clorhidrico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 16,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloroquina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 15,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 15,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "valsartan / hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 15,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "abono",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 15,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato vecol 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 15,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fosfuro de aluminio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 14,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "warfarina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 14,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sal isopropilamina de glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 14,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gramafin 200 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 14,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fungicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 14,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "methomyl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 13,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "latigo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 12,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "abono agricola",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 12,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 12,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon mata mosquitos y moscas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "se desconoce",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat + diuron",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amoniaco en solucion acuosa al 30",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos + cipermetrina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rodenticida bromadiolona 0.005% fumigax",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 11,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon zancudos y moscas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 10,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rafaga 4 ec",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas refrigerante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloroformo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloroeteno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticida pellets",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "carbamato raticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mezcla de acido perclorico y acido nitrico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 9,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "aldicarb",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan 10 gr",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro gaseoso",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid + bifentrina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat agrogen 200 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas industrial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 8,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido clorhidrico cloruro de bario acido sulfurico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bichek",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mezcla de gases",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan 4 sc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "licor adulterado con metanol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metil metsulfuron",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "exito insecticida cucarachas y hormigas aerosol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato agrogen 747 sg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos e.c. 24%",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroxicloroquina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 7,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "methox 40 sp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 6,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "abono organico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 6,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato + oxyfluorfen",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 6,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bencil-clorofenol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 6,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "dimetoato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campero",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorobenzal",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid 350 sc dva",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "aldrin",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "plaguicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "tronador sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 5,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bioplant fertilizante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bright 90 sp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "no dato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "tricloroetileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "isopropanol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon cebo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos ec 24%",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat vecol 200 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "verdadero 600 wg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "chlorpyrifos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "ultraplus - raticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid + fipronil",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "plaguicidas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "dioxido de cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro + detergente",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox y varsol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 4,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato inpro sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cipermetrina + clorpirifos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "espiral de baygon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon liquido contra insectos rastreros y voladores",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gramoxone tamaron",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "methavin 90 sp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "2_4 d amina + glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gel insecticida k4",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida para cucarachas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "picloram-2_4-diclorofenoxiacetico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gas de uso industrial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan 3 sc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "dieldrin",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amonio cuaternario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida raid",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloroacetofenona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidrogel fertilizantes",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 3,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "1 frasco raticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rodenticida anticoagulante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "\"sicario liquido \"\"veneno\"\"\"",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "ingesta de clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorotalonil rainbow 720 sc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "( 4 sorbos) de insecticida katori",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "inhalada de gas natural",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "20 pastillas de losartan/hidroclorotiazida de 50 mg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario y campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metformina omeprazol hipoclorito",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "matarratas campeon el numero 1",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito de sodio (cloro)",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario original(mataratas liquido) efecto anticumarinico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "azitromicina + flunarizina + hidroclorotiazida + hidrocortisona y antiinfecciosos + metocarbamol + nimesulida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpido hipoclorito",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticida campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito-creolina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanil herbicida dichloropropioanil",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon mata moscas y mosquitos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergente + veneno para ratas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "escitalopram + hidroclorotiazida + imipramina + quetiapina + risperidona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen + hipoclorito de sodio + ibuprofeno + loratadina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito de sodio + valeriana",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol + tizanidina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroclorotiazida + valsartan",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fluoroacetato de sodio el sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox y acetaminofen",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bromadiolona y guayaquil",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "agua con limpido cloroshampu lavar carros",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox + raticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lamotrigina 100 mg (10 tab) propanolol 40 mg (5 tab)",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metano e hidrocarburos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario 5g organofosforado aproximadamente 2 cc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen diclofenal metronidazol hidroclorotiazida naproxeno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida done",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "exito insecticida pulgas aerosol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fipronil + bromadiolona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox -baygon -tramadol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "surtimax insecticida cucarachas y hormigas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fertox insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato rainbow 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "oxicloruro de cobre + clorpirifos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "carbofuran",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "te verde limpido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon 30 noches",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metsulfuron",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid + lambda cihalotrina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "matarratas sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bazuca 50 ec",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "percloroetileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloruro de metileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metformina insecticida palmera spray",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "alcohol cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol-amitriptilina-trazodona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "ingesta de insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "surtimax insecticida pulgas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticidas- campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "vinagre hipoclorito limpia piso suavisante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "meloxicam acetaminofen y cloro quina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sustancia insecticida invetrina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicidas con metsulfuron hexazinona trionexargomex",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato wohl 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro y sanpic",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida la cobra",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid vecol 350 sc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban 25 dp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro y vinagre",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato dicsas 75.7 sg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicida glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato sharda 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol hipoclorito",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "soda caustica cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergente + hipoclorito de sodio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroclorotiazida + losartan",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida para cultivo de tomate",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno para ratas sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro-alcohol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroclorotiazida 25 mg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorofacinona",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "plaguicida de cucarachas no espesifica",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro-acetaminofen",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "antifungicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorotrimeton",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "zopiclona mas cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen . sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpido e ibuprofeno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cocaina raticida alcohol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "blancox clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rafaga 2.5 dp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "endosulfan",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol quetiapina escitalopran",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid + acefato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bencil clorofenol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban liquido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "agua + insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raid insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro domestico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "tuttela 75 mg - herbicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen-clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "matarrata - campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campeon (carbamato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campeon y clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticidas tramadol alcohol cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito y alcohol etilico mezcla",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario mataratas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amoxicilina loratadina metocarbamol desloratadin nistatina losartan cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolol aines",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticida klerat pallets",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergente clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amonio cuaternario -removedor de esmalte",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "tome clorox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox 250 ml",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "amlodipino losartan hidroclorotiazida enalapril",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox thiner jabon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen + enalapril + hidroclorotiazida + leflunomide + losartan + metoprolol + pregabalina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campeon mata rata",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cipermetrina + gramoxone",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "desengrasante industrial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "24 d amina glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "carbamazepina + carvedilol + imipramina + propanolol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "matarratas campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "carvedilol - hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "zopiclona - campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroclorotiazida y agentes ahorradores de potasio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno ratas sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "difenacouma",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "atorvastatina + fluoxetina + hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro limpido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox - medicamentos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsban - organofosforado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rodenticidas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "plaguicidas desconocido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mata raton sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito-medicamentos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro de metileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpido y pastilla",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "losartan/hidroclorotizida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon rodenticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "fluoxetina + hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario corganofodfarado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "99999999",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "quetiapina hipoclorito",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "raticida+desconocido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan 5 granulado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno a base de warfarina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "efectrina 200",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpiador para horno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sicario fluroacetato de sodio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "inhalacion de humo de carbono",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro no industrial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "el arriero",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insectisida (sicario) mata rata",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan glifosoldifenoconazole",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 2,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "nitropropano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroxido de potacio hipoclorito de sodio oxido de alquilamina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro dr pool",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "diclorometano",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito comercial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpia hornos marca tante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "desengrasante alcalino",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "agua de fab con cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorox vinagre",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergentes y jabones patotanque",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "diablo rojo y acido muriatico",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "soda caustica y cloro al 70 por ciento",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpiador",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido triclorocianurico al 91 todo en uno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito mas bicarbonato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpiador de juntas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito de sodio cloro",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "sustancia desconocida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "gasolina y detergente",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "jabon en polvo desodorante balance",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "soda caustica agua destilada y aceite presenta",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroxido de potasio hidroxido de sodio glicerina alcohol removedor de cayos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "quimico acido limpiador de superficie",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpiador refrigerante",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido desengrasante industrial",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "cloro amonio",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "taycuat amonio cuaternario de 5ta generacion",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "oxido de etileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hidroxido de sodio con soda caustica",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "detergente alcalino deptal",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "losratan hidroclorotiazida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "limpiador multiuso king",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito fasclean",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "desmanchador industrial y limpido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "hipoclorito de sodio 5 25",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metimazol + propanolol + quetiapina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorban",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "methomil insecticida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "regio herbicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "ciflutrina - imidacloprid",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "campeon registro 1022ra",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "arriero 2_5 dp",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid inpro 350 sc",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "pesticidas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida spaider",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "malation limor",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "demetex insecticida agricola",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bichek voladores aerosol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida alisin",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paraquat metamidofos",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "finale herbicida",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato yaser 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "propanolo",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "rastop pellets bromadiolona 4-hidroxicumarinaclonazepam",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno ratones sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "atrazina vecol 90% wg",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "lorsvan",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mataraton campeon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mata rata sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acido nitrico al 50%",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "mataratas el sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "acetaminofen asa clorox valeriana alcohol gliserinado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "(cloruro de metileno",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato + terbutilazina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bichek liquido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida lambdox",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "azufre + clorotalonil",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida nombre desconocido",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "veneno para rata el sicario",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "metsulfuron metil 60% wg dva",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "furadan 3 gr",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon plaquitas",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "burner 150 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "atrazina + metolaclhor",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "alto 100",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "diazinon",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid inpro 600 fs",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "paration metilico 48% ec",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "imidacloprid + permetrina",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "glifosato crl 480 sl",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicida glifosato victorious",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "baygon espiral",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicida matabicho",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "kandar 40 ec dva dimetoato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "victorius ub sl herbicido glifosato",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "bichek rastreros aerosol",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "insecticida exterminio total",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "latigo cc organofosforado",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos 2.5 dp agricense",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "latigo ec",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "herbicida tilla",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  },
+  {
+    "nombre_producto": "clorpirifos 48 ec ecifonpa",
+    "razon": "Filtrado por blacklist general (plaguicidas/limpieza/corrosivos)",
+    "frecuencia": 1,
+    "blacklist": true
+  }
+]

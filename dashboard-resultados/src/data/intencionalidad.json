@@ -1,0 +1,10 @@
+[
+  {
+    "intencionalidad": "no_intencional",
+    "numero_registros": 53368
+  },
+  {
+    "intencionalidad": "intencional",
+    "numero_registros": 44661
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "sustancia": "otros",
+    "total_registros": 41809,
+    "n_intencional": 22550,
+    "n_no_intencional": 19259,
+    "n_sexo_F": 22587,
+    "n_sexo_M": 19222
+  },
+  {
+    "sustancia": "medicamentos_no_SPA",
+    "total_registros": 27006,
+    "n_intencional": 12466,
+    "n_no_intencional": 14540,
+    "n_sexo_F": 19826,
+    "n_sexo_M": 7180
+  },
+  {
+    "sustancia": "tranquilizantes_y_sedantes",
+    "total_registros": 17682,
+    "n_intencional": 8065,
+    "n_no_intencional": 9617,
+    "n_sexo_F": 12314,
+    "n_sexo_M": 5368
+  },
+  {
+    "sustancia": "alcohol_etanol",
+    "total_registros": 2555,
+    "n_intencional": 165,
+    "n_no_intencional": 2390,
+    "n_sexo_F": 1042,
+    "n_sexo_M": 1513
+  },
+  {
+    "sustancia": "opioides",
+    "total_registros": 1886,
+    "n_intencional": 772,
+    "n_no_intencional": 1114,
+    "n_sexo_F": 1159,
+    "n_sexo_M": 727
+  },
+  {
+    "sustancia": "cannabinoides",
+    "total_registros": 1797,
+    "n_intencional": 46,
+    "n_no_intencional": 1751,
+    "n_sexo_F": 599,
+    "n_sexo_M": 1198
+  },
+  {
+    "sustancia": "cocaina_y_derivados",
+    "total_registros": 1763,
+    "n_intencional": 103,
+    "n_no_intencional": 1660,
+    "n_sexo_F": 334,
+    "n_sexo_M": 1429
+  },
+  {
+    "sustancia": "productos_limpieza",
+    "total_registros": 970,
+    "n_intencional": 234,
+    "n_no_intencional": 736,
+    "n_sexo_F": 542,
+    "n_sexo_M": 428
+  },
+  {
+    "sustancia": "inhalantes",
+    "total_registros": 798,
+    "n_intencional": 115,
+    "n_no_intencional": 683,
+    "n_sexo_F": 348,
+    "n_sexo_M": 450
+  },
+  {
+    "sustancia": "gases_combustibles",
+    "total_registros": 597,
+    "n_intencional": 80,
+    "n_no_intencional": 517,
+    "n_sexo_F": 261,
+    "n_sexo_M": 336
+  },
+  {
+    "sustancia": "escopolamina",
+    "total_registros": 417,
+    "n_intencional": 1,
+    "n_no_intencional": 416,
+    "n_sexo_F": 157,
+    "n_sexo_M": 260
+  },
+  {
+    "sustancia": "alucinogenos",
+    "total_registros": 326,
+    "n_intencional": 43,
+    "n_no_intencional": 283,
+    "n_sexo_F": 121,
+    "n_sexo_M": 205
+  },
+  {
+    "sustancia": "PSA_no_clasificado_lista",
+    "total_registros": 239,
+    "n_intencional": 8,
+    "n_no_intencional": 231,
+    "n_sexo_F": 72,
+    "n_sexo_M": 167
+  },
+  {
+    "sustancia": "estimulantes",
+    "total_registros": 184,
+    "n_intencional": 13,
+    "n_no_intencional": 171,
+    "n_sexo_F": 71,
+    "n_sexo_M": 113
+  }
+]

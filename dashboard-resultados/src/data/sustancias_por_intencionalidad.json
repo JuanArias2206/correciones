@@ -1,0 +1,114 @@
+[
+  {
+    "sustancia": "otros",
+    "intencional": 22550,
+    "no_intencional": 19259,
+    "total": 41809,
+    "porcentaje_intencional": 53.94,
+    "porcentaje_no_intencional": 46.06
+  },
+  {
+    "sustancia": "medicamentos_no_SPA",
+    "intencional": 12466,
+    "no_intencional": 14540,
+    "total": 27006,
+    "porcentaje_intencional": 46.16,
+    "porcentaje_no_intencional": 53.84
+  },
+  {
+    "sustancia": "tranquilizantes_y_sedantes",
+    "intencional": 8065,
+    "no_intencional": 9617,
+    "total": 17682,
+    "porcentaje_intencional": 45.61,
+    "porcentaje_no_intencional": 54.39
+  },
+  {
+    "sustancia": "opioides",
+    "intencional": 772,
+    "no_intencional": 1114,
+    "total": 1886,
+    "porcentaje_intencional": 40.93,
+    "porcentaje_no_intencional": 59.07
+  },
+  {
+    "sustancia": "productos_limpieza",
+    "intencional": 234,
+    "no_intencional": 736,
+    "total": 970,
+    "porcentaje_intencional": 24.12,
+    "porcentaje_no_intencional": 75.88
+  },
+  {
+    "sustancia": "alcohol_etanol",
+    "intencional": 165,
+    "no_intencional": 2390,
+    "total": 2555,
+    "porcentaje_intencional": 6.46,
+    "porcentaje_no_intencional": 93.54
+  },
+  {
+    "sustancia": "inhalantes",
+    "intencional": 115,
+    "no_intencional": 683,
+    "total": 798,
+    "porcentaje_intencional": 14.41,
+    "porcentaje_no_intencional": 85.59
+  },
+  {
+    "sustancia": "cocaina_y_derivados",
+    "intencional": 103,
+    "no_intencional": 1660,
+    "total": 1763,
+    "porcentaje_intencional": 5.84,
+    "porcentaje_no_intencional": 94.16
+  },
+  {
+    "sustancia": "gases_combustibles",
+    "intencional": 80,
+    "no_intencional": 517,
+    "total": 597,
+    "porcentaje_intencional": 13.4,
+    "porcentaje_no_intencional": 86.6
+  },
+  {
+    "sustancia": "cannabinoides",
+    "intencional": 46,
+    "no_intencional": 1751,
+    "total": 1797,
+    "porcentaje_intencional": 2.56,
+    "porcentaje_no_intencional": 97.44
+  },
+  {
+    "sustancia": "alucinogenos",
+    "intencional": 43,
+    "no_intencional": 283,
+    "total": 326,
+    "porcentaje_intencional": 13.19,
+    "porcentaje_no_intencional": 86.81
+  },
+  {
+    "sustancia": "estimulantes",
+    "intencional": 13,
+    "no_intencional": 171,
+    "total": 184,
+    "porcentaje_intencional": 7.07,
+    "porcentaje_no_intencional": 92.93
+  },
+  {
+    "sustancia": "PSA_no_clasificado_lista",
+    "intencional": 8,
+    "no_intencional": 231,
+    "total": 239,
+    "porcentaje_intencional": 3.35,
+    "porcentaje_no_intencional": 96.65
+  },
+  {
+    "sustancia": "escopolamina",
+    "intencional": 1,
+    "no_intencional": 416,
+    "total": 417,
+    "porcentaje_intencional": 0.24,
+    "porcentaje_no_intencional": 99.76
+  }
+]

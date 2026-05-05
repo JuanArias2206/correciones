@@ -1,0 +1,72 @@
+[
+  {
+    "sustancia": "PSA_no_clasificado_lista",
+    "F": 72,
+    "M": 167
+  },
+  {
+    "sustancia": "alcohol_etanol",
+    "F": 1042,
+    "M": 1513
+  },
+  {
+    "sustancia": "alucinogenos",
+    "F": 121,
+    "M": 205
+  },
+  {
+    "sustancia": "cannabinoides",
+    "F": 599,
+    "M": 1198
+  },
+  {
+    "sustancia": "cocaina_y_derivados",
+    "F": 334,
+    "M": 1429
+  },
+  {
+    "sustancia": "escopolamina",
+    "F": 157,
+    "M": 260
+  },
+  {
+    "sustancia": "estimulantes",
+    "F": 71,
+    "M": 113
+  },
+  {
+    "sustancia": "gases_combustibles",
+    "F": 261,
+    "M": 336
+  },
+  {
+    "sustancia": "inhalantes",
+    "F": 348,
+    "M": 450
+  },
+  {
+    "sustancia": "medicamentos_no_SPA",
+    "F": 19826,
+    "M": 7180
+  },
+  {
+    "sustancia": "opioides",
+    "F": 1159,
+    "M": 727
+  },
+  {
+    "sustancia": "otros",
+    "F": 22587,
+    "M": 19222
+  },
+  {
+    "sustancia": "productos_limpieza",
+    "F": 542,
+    "M": 428
+  },
+  {
+    "sustancia": "tranquilizantes_y_sedantes",
+    "F": 12314,
+    "M": 5368
+  }
+]

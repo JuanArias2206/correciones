@@ -1,0 +1,632 @@
+[
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 22615
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 12466
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 8065
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 772
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 234
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 158
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 103
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 80
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 46
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 43
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 13
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 8
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 4
+  },
+  {
+    "origen_hoja": "_356_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 1
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 6576
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 42
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 38
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 34
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 21
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 7
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 5
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 4
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 3
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 1
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_360_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 14445
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 9571
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 4373
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 992
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 58
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 49
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 45
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 11
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 10
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 6
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 4
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 1
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_370_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 112
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 33
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_380_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 39
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 35
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_390_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 630
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 219
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 98
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 85
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 59
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_400_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 5003
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 560
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 128
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 63
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 60
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 43
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 31
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 22
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 19
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 9
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 8
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 7
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 2
+  },
+  {
+    "origen_hoja": "_410_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 2
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 997
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 106
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_412_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "otros",
+    "conteo": 2021
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "alcohol_etanol",
+    "conteo": 2005
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "cannabinoides",
+    "conteo": 1733
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "cocaina_y_derivados",
+    "conteo": 1637
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "escopolamina",
+    "conteo": 414
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "alucinogenos",
+    "conteo": 218
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "PSA_no_clasificado_lista",
+    "conteo": 216
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "estimulantes",
+    "conteo": 153
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "opioides",
+    "conteo": 75
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "inhalantes",
+    "conteo": 10
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "medicamentos_no_SPA",
+    "conteo": 1
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "gases_combustibles",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "productos_limpieza",
+    "conteo": 0
+  },
+  {
+    "origen_hoja": "_414_2024",
+    "grupo_sustancia_final": "tranquilizantes_y_sedantes",
+    "conteo": 0
+  }
+]

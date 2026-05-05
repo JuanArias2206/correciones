@@ -1,0 +1,58 @@
+[
+  {
+    "Clasificación Final": "otros",
+    "Conteo": 42283
+  },
+  {
+    "Clasificación Final": "medicamentos_no_SPA",
+    "Conteo": 27006
+  },
+  {
+    "Clasificación Final": "tranquilizantes_y_sedantes",
+    "Conteo": 17682
+  },
+  {
+    "Clasificación Final": "alcohol_etanol",
+    "Conteo": 2499
+  },
+  {
+    "Clasificación Final": "opioides",
+    "Conteo": 1886
+  },
+  {
+    "Clasificación Final": "cannabinoides",
+    "Conteo": 1797
+  },
+  {
+    "Clasificación Final": "cocaina_y_derivados",
+    "Conteo": 1763
+  },
+  {
+    "Clasificación Final": "productos_limpieza",
+    "Conteo": 970
+  },
+  {
+    "Clasificación Final": "gases_combustibles",
+    "Conteo": 597
+  },
+  {
+    "Clasificación Final": "escopolamina",
+    "Conteo": 417
+  },
+  {
+    "Clasificación Final": "alucinogenos",
+    "Conteo": 326
+  },
+  {
+    "Clasificación Final": "PSA_no_clasificado_lista",
+    "Conteo": 239
+  },
+  {
+    "Clasificación Final": "estimulantes",
+    "Conteo": 184
+  },
+  {
+    "Clasificación Final": "inhalantes",
+    "Conteo": 108
+  }
+]

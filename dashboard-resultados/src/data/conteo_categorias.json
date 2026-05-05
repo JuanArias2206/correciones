@@ -1,0 +1,58 @@
+[
+  {
+    "categoria": "otros",
+    "conteo": 42283
+  },
+  {
+    "categoria": "medicamentos_no_SPA",
+    "conteo": 27006
+  },
+  {
+    "categoria": "tranquilizantes_y_sedantes",
+    "conteo": 17682
+  },
+  {
+    "categoria": "alcohol_etanol",
+    "conteo": 2499
+  },
+  {
+    "categoria": "opioides",
+    "conteo": 1886
+  },
+  {
+    "categoria": "cannabinoides",
+    "conteo": 1797
+  },
+  {
+    "categoria": "cocaina_y_derivados",
+    "conteo": 1763
+  },
+  {
+    "categoria": "productos_limpieza",
+    "conteo": 970
+  },
+  {
+    "categoria": "gases_combustibles",
+    "conteo": 597
+  },
+  {
+    "categoria": "escopolamina",
+    "conteo": 417
+  },
+  {
+    "categoria": "alucinogenos",
+    "conteo": 326
+  },
+  {
+    "categoria": "PSA_no_clasificado_lista",
+    "conteo": 239
+  },
+  {
+    "categoria": "estimulantes",
+    "conteo": 184
+  },
+  {
+    "categoria": "inhalantes",
+    "conteo": 108
+  }
+]

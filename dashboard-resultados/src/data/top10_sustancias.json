@@ -1,0 +1,42 @@
+[
+  {
+    "sustancia": "otros",
+    "numero_registros": 41809
+  },
+  {
+    "sustancia": "medicamentos_no_SPA",
+    "numero_registros": 27006
+  },
+  {
+    "sustancia": "tranquilizantes_y_sedantes",
+    "numero_registros": 17682
+  },
+  {
+    "sustancia": "alcohol_etanol",
+    "numero_registros": 2555
+  },
+  {
+    "sustancia": "opioides",
+    "numero_registros": 1886
+  },
+  {
+    "sustancia": "cannabinoides",
+    "numero_registros": 1797
+  },
+  {
+    "sustancia": "cocaina_y_derivados",
+    "numero_registros": 1763
+  },
+  {
+    "sustancia": "productos_limpieza",
+    "numero_registros": 970
+  },
+  {
+    "sustancia": "inhalantes",
+    "numero_registros": 798
+  },
+  {
+    "sustancia": "gases_combustibles",
+    "numero_registros": 597
+  }
+]

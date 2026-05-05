@@ -1,0 +1,58 @@
+[
+  {
+    "tipo_sustancia": "otros",
+    "numero_registros": 42283
+  },
+  {
+    "tipo_sustancia": "medicamentos_no_SPA",
+    "numero_registros": 39368
+  },
+  {
+    "tipo_sustancia": "tranquilizantes_y_sedantes",
+    "numero_registros": 28802
+  },
+  {
+    "tipo_sustancia": "opioides",
+    "numero_registros": 3241
+  },
+  {
+    "tipo_sustancia": "alcohol_etanol",
+    "numero_registros": 2659
+  },
+  {
+    "tipo_sustancia": "cocaina_y_derivados",
+    "numero_registros": 1872
+  },
+  {
+    "tipo_sustancia": "cannabinoides",
+    "numero_registros": 1869
+  },
+  {
+    "tipo_sustancia": "productos_limpieza",
+    "numero_registros": 1140
+  },
+  {
+    "tipo_sustancia": "gases_combustibles",
+    "numero_registros": 762
+  },
+  {
+    "tipo_sustancia": "escopolamina",
+    "numero_registros": 417
+  },
+  {
+    "tipo_sustancia": "alucinogenos",
+    "numero_registros": 374
+  },
+  {
+    "tipo_sustancia": "PSA_no_clasificado_lista",
+    "numero_registros": 239
+  },
+  {
+    "tipo_sustancia": "estimulantes",
+    "numero_registros": 198
+  },
+  {
+    "tipo_sustancia": "inhalantes",
+    "numero_registros": 144
+  }
+]

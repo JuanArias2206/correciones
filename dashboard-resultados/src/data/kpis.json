@@ -1,0 +1,14 @@
+{
+  "total_registros": 98029,
+  "intencional": 44661,
+  "no_intencional": 53368,
+  "pct_intencional": 45.56,
+  "pct_no_intencional": 54.44,
+  "sustancia_mas_frecuente": "otros",
+  "segunda_sustancia": "medicamentos_no_SPA",
+  "tercera_sustancia": "tranquilizantes_y_sedantes",
+  "sustancia_mas_intencional": "otros",
+  "sexo_f": 59433,
+  "sexo_m": 38596,
+  "categorias_detectadas": 14
+}
