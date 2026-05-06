@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
@@ -7,6 +7,7 @@ import {
 import KpiCard from './components/KpiCard';
 import DataTable from './components/DataTable';
 import ChatBot from './components/ChatBot';
+import ThemeToggle from './components/ThemeToggle';
 import {
   kpis as baseKpis, sustancias as baseSustancias, intencionalidad as baseIntenc,
   sexo as baseSexo, sustanciasPorIntencionalidad as baseSustInt,
@@ -121,11 +122,19 @@ const SH = ({ icon, title, badge }) => (
    MAIN APP
    ═══════════════════════════════════════════════════════════════════ */
 const App = () => {
+  const [theme,          setTheme]          = useState(() => localStorage.getItem('theme') || 'dark');
   const [sidebarOpen,    setSidebarOpen]    = useState(false);
   const [activeSection,  setActiveSection]  = useState('kpis');
   const [filtros,        setFiltros]        = useState({ sexo: null, sustancia: null, intencionalidad: null, topN: 'todas' });
   const [pieSexoIdx,     setPieSexoIdx]     = useState(0);
   const [pieIntencIdx,   setPieIntencIdx]   = useState(0);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => setTheme(p => p === 'dark' ? 'light' : 'dark'), []);
 
   const setFilter = useCallback((key, val) =>
     setFiltros(p => p[key] === val ? { ...p, [key]: null } : { ...p, [key]: val }), []);
@@ -288,8 +297,9 @@ const App = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container" data-theme={theme}>
       <GradDefs />
+      <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
       {/* Mobile toggle */}
       <button className="mobile-menu-btn" onClick={()=>setSidebarOpen(!sidebarOpen)}>
