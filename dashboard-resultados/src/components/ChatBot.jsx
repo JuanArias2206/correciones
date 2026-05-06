@@ -294,12 +294,10 @@ const CopyBtn = ({ text }) => {
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const DEFAULT_API_KEY = 'sk-90b9c21e412447b188162cab53fad814';
-
   const getInitialApiKey = () => {
     const envKey = import.meta.env?.VITE_DEEPSEEK_API_KEY;
     if (envKey) return envKey;
-    return localStorage.getItem('deepseek_api_key') || sessionStorage.getItem('deepseek_api_key') || DEFAULT_API_KEY;
+    return localStorage.getItem('deepseek_api_key') || sessionStorage.getItem('deepseek_api_key') || '';
   };
 
   const [apiKey,      setApiKey]      = useState(getInitialApiKey);
