@@ -36,6 +36,7 @@ const sections = [
   { id: 'sexo',           label: 'Por Sexo',         icon: '\u26A5'    },
   { id: 'intencionalidad',label: 'Intencionalidad',  icon: '\u{1F3AF}' },
   { id: 'productos',      label: 'Productos',        icon: '\u{1F4E6}' },
+  { id: 'avanzado',       label: 'Avanzado',         icon: '\u{1F52C}' },
   { id: 'tabla',          label: 'Tabla',            icon: '\u{1F50D}' },
   { id: 'hallazgos',      label: 'Hallazgos',        icon: '\u{1F4A1}' },
   { id: 'originales',     label: 'Graficas',         icon: '\u{1F5BC}' },
@@ -89,15 +90,19 @@ const DarkTooltip = ({ active, payload, label }) => {
 /* ─── ACTIVE DONUT SHAPE ─────────────────────────────────────────── */
 const ActiveDonutShape = (props) => {
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill, payload, value, percent } = props;
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const textColor = isLight ? '#1e293b' : '#f1f5f9';
+  const subColor = isLight ? '#64748b' : '#64748b';
+  const pctColor = isLight ? '#4f46e5' : '#818cf8';
   return (
     <g>
-      <text x={cx} y={cy - 10} textAnchor="middle" fill="#f1f5f9" fontSize={22} fontWeight={900} fontFamily="Inter">
+      <text x={cx} y={cy - 10} textAnchor="middle" fill={textColor} fontSize={22} fontWeight={900} fontFamily="Inter">
         {Number(value).toLocaleString('es-CO')}
       </text>
-      <text x={cx} y={cy + 12} textAnchor="middle" fill="#64748b" fontSize={10} fontWeight={500}>
+      <text x={cx} y={cy + 12} textAnchor="middle" fill={subColor} fontSize={10} fontWeight={500}>
         {payload.name}
       </text>
-      <text x={cx} y={cy + 28} textAnchor="middle" fill="#818cf8" fontSize={13} fontWeight={700}>
+      <text x={cx} y={cy + 28} textAnchor="middle" fill={pctColor} fontSize={13} fontWeight={700}>
         {(percent * 100).toFixed(1)}%
       </text>
       <Sector cx={cx} cy={cy} innerRadius={innerRadius} outerRadius={outerRadius + 7} startAngle={startAngle} endAngle={endAngle} fill={fill} />
@@ -264,6 +269,50 @@ const App = () => {
   const uniqueCats    = useMemo(()=>[...new Set(productosTodos.map(p=>p.categoria))].sort(), []);
   const uniqueMetodos = useMemo(()=>[...new Set(resultadosLlm.map(r=>r.metodo_clasificacion).filter(Boolean))].sort(), []);
   const uniqueOrig    = useMemo(()=>[...new Set(resultadosLlm.map(r=>r.origen_hoja).filter(Boolean))].sort(), []);
+
+  /* ── New chart data: Metodo de Clasificacion ── */
+  const metodoData = useMemo(() => {
+    const m = {};
+    filteredBase.forEach(r => {
+      const met = r.metodo_clasificacion;
+      if (!met || met === 'nan') return;
+      m[met] = (m[met] || 0) + 1;
+    });
+    return Object.entries(m).map(([name, numero_registros]) => ({ name, numero_registros })).sort((a, b) => b.numero_registros - a.numero_registros);
+  }, [filteredBase]);
+
+  const metodoColors = { deterministic: '#818cf8', llm: '#f472b6', cache: '#22d3ee', blacklist: '#f87171', default: '#fbbf24' };
+
+  /* ── New chart data: Top 15 Productos Globales ─ */
+  const topProductos = useMemo(() => {
+    const m = {};
+    filteredBase.forEach(r => {
+      const prod = r.nom_pro;
+      if (!prod || prod === 'nan') return;
+      m[prod] = (m[prod] || 0) + 1;
+    });
+    return Object.entries(m).map(([producto, numero_registros]) => ({ producto, numero_registros })).sort((a, b) => b.numero_registros - a.numero_registros).slice(0, 15);
+  }, [filteredBase]);
+
+  /* ── New chart data: Intencionalidad por Sexo ── */
+  const intencSexoData = useMemo(() => {
+    const m = {};
+    filteredBase.forEach(r => {
+      const s = r.sexo;
+      const i = r.intencionalidad;
+      if (!s || s === 'nan' || !i || i === 'nan') return;
+      const key = `${s}`;
+      if (!m[key]) m[key] = { intencional: 0, no_intencional: 0 };
+      if (i === 'intencional') m[key].intencional++;
+      else if (i === 'no_intencional') m[key].no_intencional++;
+    });
+    return Object.entries(m).map(([sexo, d]) => ({
+      sexo: sexo === 'F' ? 'Femenino' : 'Masculino',
+      intencional: d.intencional,
+      no_intencional: d.no_intencional,
+      total: d.intencional + d.no_intencional,
+    }));
+  }, [filteredBase]);
 
   const scrollTo = (id) => {
     setActiveSection(id);
@@ -673,6 +722,120 @@ const App = () => {
             <DataTable data={prodFilt}
               columns={[{key:'categoria',label:'Categoria'},{key:'producto',label:'Producto'},{key:'conteo',label:'Conteo'},{key:'metodo_clasificacion',label:'Metodo'}]}
               exportFilename="productos.csv" showFilters={false} showSearch={false} showExport={false}/>
+          </div>
+        </motion.section>
+
+        {/* ══ ANALISIS AVANZADO ═════════════════════════════════════ */}
+        <motion.section id="avanzado" variants={secVar} initial="hidden" whileInView="visible" viewport={{once:true,margin:'-60px'}}>
+          <SH icon={'\u{1F52C}'} title="Analisis Avanzado" badge={hasFilters?'filtrado':null}/>
+
+          {/* Chart 1: Metodo de Clasificacion */}
+          <div className="card">
+            <div className="card-header">
+              <div className="card-title">Distribucion por Metodo de Clasificacion</div>
+              <div className="card-hint">{metodoData.length} metodos</div>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1.25rem',alignItems:'center'}}>
+              <ResponsiveContainer width="100%" height={280}>
+                <PieChart>
+                  <Pie data={metodoData} dataKey="numero_registros" nameKey="name"
+                    cx="50%" cy="50%" innerRadius={55} outerRadius={90}
+                    onClick={d => {
+                      if (d?.name && uniqueMetodos.includes(d.name)) {
+                        const h = document.getElementById('tabla');
+                        h?.scrollIntoView({ behavior:'smooth' });
+                      }
+                    }}
+                    style={{cursor:'pointer'}}>
+                    {metodoData.map((entry, i) => (
+                      <Cell key={i} fill={metodoColors[entry.name] || `hsl(${i * 60}, 70%, 60%)`} />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<DarkTooltip/>}/>
+                  <Legend iconType="circle" iconSize={8}/>
+                </PieChart>
+              </ResponsiveContainer>
+              <div>
+                {metodoData.map((m, i) => (
+                  <div key={i} style={{display:'flex',alignItems:'center',gap:'0.75rem',padding:'0.5rem 0',borderBottom:'1px solid var(--glass-border)'}}>
+                    <div style={{width:12,height:12,borderRadius:3,background:metodoColors[m.name]||'#818cf8',flexShrink:0}}/>
+                    <div style={{flex:1}}>
+                      <div style={{fontSize:'0.82rem',fontWeight:600,color:'var(--text)'}}>{m.name}</div>
+                      <div style={{fontSize:'0.72rem',color:'var(--text-secondary)'}}>{m.numero_registros.toLocaleString('es-CO')} registros</div>
+                    </div>
+                    <div style={{fontSize:'0.82rem',fontWeight:700,color:'var(--primary)'}}>
+                      {metodoData.reduce((s,x)=>s+x.numero_registros,0)?((m.numero_registros/metodoData.reduce((s,x)=>s+x.numero_registros,0))*100).toFixed(1):0}%
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Chart 2: Top 15 Productos Globales */}
+          <div className="card">
+            <div className="card-header">
+              <div className="card-title">Top 15 Productos Globales</div>
+              <div className="card-hint">clic en barra = filtrar por sustancia</div>
+            </div>
+            <ResponsiveContainer width="100%" height={Math.max(320, topProductos.length * 28)}>
+              <BarChart data={topProductos} layout="vertical" margin={{left:8,right:24,top:4,bottom:4}}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false}/>
+                <XAxis type="number" tick={{fontSize:11,fill:'#475569'}} axisLine={{stroke:'rgba(255,255,255,0.06)'}} tickLine={false}/>
+                <YAxis dataKey="producto" type="category" width={175} tick={{fontSize:10,fontWeight:500,fill:'#64748b'}} axisLine={false} tickLine={false}/>
+                <Tooltip content={<DarkTooltip/>}/>
+                <Bar dataKey="numero_registros" name="Registros" radius={[0,5,5,0]} barSize={14}
+                  style={{cursor:'pointer'}}>
+                  {topProductos.map((item, i) => (
+                    <Cell key={i} fill={`hsl(${230 + i * 8}, 70%, ${65 - i * 1.5}%)`}/>
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          {/* Chart 3: Intencionalidad por Sexo */}
+          <div className="card">
+            <div className="card-header">
+              <div className="card-title">Intencionalidad por Sexo</div>
+              <div className="card-hint">clic = filtrar</div>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1.25rem'}}>
+              <ResponsiveContainer width="100%" height={260}>
+                <BarChart data={intencSexoData} margin={{left:8,right:12}}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false}/>
+                  <XAxis dataKey="sexo" tick={{fontSize:12,fontWeight:600,fill:'#64748b'}} axisLine={{stroke:'rgba(255,255,255,0.06)'}} tickLine={false}/>
+                  <YAxis tick={{fontSize:11,fill:'#475569'}} axisLine={{stroke:'rgba(255,255,255,0.06)'}} tickLine={false}/>
+                  <Tooltip content={<DarkTooltip/>}/>
+                  <Legend iconType="circle" iconSize={7}/>
+                  <Bar dataKey="intencional"    name="Intencional"    stackId="a" fill="url(#gDanger)"  radius={[4,4,0,0]} barSize={48}
+                    onClick={() => setFilter('intencionalidad', 'intencional')} style={{cursor:'pointer'}}/>
+                  <Bar dataKey="no_intencional" name="No Intencional" stackId="a" fill="url(#gSuccess)" radius={[4,4,0,0]} barSize={48}
+                    onClick={() => setFilter('intencionalidad', 'no_intencional')} style={{cursor:'pointer'}}/>
+                </BarChart>
+              </ResponsiveContainer>
+              <div>
+                {intencSexoData.map((d, i) => {
+                  const pctI = d.total ? ((d.intencional / d.total) * 100).toFixed(1) : 0;
+                  const pctNI = d.total ? ((d.no_intencional / d.total) * 100).toFixed(1) : 0;
+                  return (
+                    <div key={i} style={{padding:'1rem',background:'var(--surface-hover)',borderRadius:'var(--radius-sm)',marginBottom:'0.75rem'}}>
+                      <div style={{fontSize:'0.88rem',fontWeight:700,color:'var(--text)',marginBottom:'0.5rem'}}>{d.sexo}</div>
+                      <div style={{display:'flex',justifyContent:'space-between',fontSize:'0.78rem',marginBottom:'0.25rem'}}>
+                        <span style={{color:'#f87171'}}>Intencional: {d.intencional.toLocaleString('es-CO')} ({pctI}%)</span>
+                      </div>
+                      <div style={{display:'flex',justifyContent:'space-between',fontSize:'0.78rem',marginBottom:'0.5rem'}}>
+                        <span style={{color:'#34d399'}}>No Intencional: {d.no_intencional.toLocaleString('es-CO')} ({pctNI}%)</span>
+                      </div>
+                      <div style={{height:6,borderRadius:3,background:'var(--glass-border)',overflow:'hidden',display:'flex'}}>
+                        <div style={{width:`${pctI}%`,background:'linear-gradient(90deg,#dc2626,#f87171)',borderRadius:'3px 0 0 3px'}}/>
+                        <div style={{width:`${pctNI}%`,background:'linear-gradient(90deg,#059669,#34d399)',borderRadius:'0 3px 3px 0'}}/>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </motion.section>
 
