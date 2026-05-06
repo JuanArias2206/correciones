@@ -717,6 +717,11 @@ tbody tr:last-child td { border-bottom: none; }
 .chat-message-content ol, .chat-message-content ul { margin: 0.25rem 0; padding-left: 1.3rem; }
 .chat-message-content ol li, .chat-message-content ul li { margin-bottom: 0.15rem; font-size: 0.85rem; }
 .chat-message-content .chat-numbered { display: block; font-weight: 500; margin: 0.1rem 0; }
+.chat-message-content .chat-table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.82rem; }
+.chat-message-content .chat-table th, .chat-message-content .chat-table td { padding: 0.4rem 0.6rem; border: 1px solid rgba(129,140,248,0.15); text-align: left; }
+.chat-message-content .chat-table th { background: rgba(129,140,248,0.1); font-weight: 700; color: var(--primary); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.chat-message-content .chat-table td { color: var(--text-secondary); }
+.chat-message-content .chat-table tbody tr:nth-child(even) td { background: rgba(129,140,248,0.03); }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
 .dashboard-footer {
@@ -998,6 +1003,10 @@ html[data-theme="light"] .chatbot-suggestions { background: #f8fafc; border-colo
 html[data-theme="light"] .chatbot-input-area { background: #f8fafc; border-color: rgba(0,0,0,0.07); }
 html[data-theme="light"] .chatbot-config { background: #f8fafc; }
 html[data-theme="light"] .chatbot-copy-btn { background: #f1f5f9; border-color: rgba(0,0,0,0.08); }
+html[data-theme="light"] .chat-message-content .chat-table th { background: rgba(99,102,241,0.08); color: #4f46e5; }
+html[data-theme="light"] .chat-message-content .chat-table th, html[data-theme="light"] .chat-message-content .chat-table td { border-color: rgba(0,0,0,0.08); }
+html[data-theme="light"] .chat-message-content .chat-table td { color: #475569; }
+html[data-theme="light"] .chat-message-content .chat-table tbody tr:nth-child(even) td { background: rgba(99,102,241,0.02); }
 
 @media (max-width: 480px) {
   .chatbot-window { width: calc(100vw - 1rem); right: 0.5rem; bottom: calc(1rem + 64px); height: calc(100vh - 8rem); }

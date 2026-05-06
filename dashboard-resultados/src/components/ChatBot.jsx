@@ -103,10 +103,10 @@ const extractContextFromQuery = (query) => {
 };
 
 const mergeContext = (prev, curr) => ({
-  categories: [...new Set([...prev.categories, ...curr.categories])],
+  categories: curr.categories.length > 0 ? curr.categories : prev.categories,
   sex: curr.sex || prev.sex,
   intencionalidad: curr.intencionalidad || prev.intencionalidad,
-  products: [...new Set([...prev.products, ...curr.products])],
+  products: curr.products.length > 0 ? curr.products : prev.products,
 });
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -321,8 +321,23 @@ const formatMarkdown = (text) => {
 
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 
+  html = html.replace(/\|(.+)\|/g, (match, content) => {
+    const cells = content.split('|').map(c => c.trim());
+    if (cells.every(c => /^[-:]+$/.test(c))) return '<!--table-sep-->';
+    return `<tr>${cells.map(c => `<td>${c}</td>`).join('')}</tr>`;
+  });
+
+  html = html.replace(/((?:<tr>.*<\/tr>\n?)+)/g, (match) => {
+    const rows = match.split('<!--table-sep-->\n').filter(Boolean);
+    if (rows.length < 2) return match;
+    const header = rows[0].replace(/<tr>(.*?)<\/tr>/s, '<thead><tr>$1</tr></thead>').replace(/<td>/g, '<th>').replace(/<\/td>/g, '</th>');
+    const body = rows.slice(1).map(r => `<tbody>${r}</tbody>`).join('');
+    return `<table class="chat-table">${header}${body}</table>`;
+  });
+
   const paragraphs = html.split('\n\n');
   html = paragraphs.map(p => {
+    if (p.includes('<table')) return p;
     const lines = p.split('\n');
     const isNumbered = lines.filter(l => /^\d+\.\s/.test(l.trim())).length > lines.length * 0.5 && lines.filter(l => l.trim()).length > 1;
     const isBullet = lines.filter(l => /^[-•]\s/.test(l.trim())).length > lines.length * 0.5 && lines.filter(l => l.trim()).length > 1;
