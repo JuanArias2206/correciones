@@ -39,13 +39,43 @@ baseCompleta.forEach(r => {
   prodCatIntenc[key][prod] = (prodCatIntenc[key][prod] || 0) + 1;
 });
 
+const catIntenc = {};
+baseCompleta.forEach(r => {
+  const cat = r.grupos_sustancia_final;
+  const i = r.intencionalidad;
+  if (!cat || cat === 'nan' || !i) return;
+  if (!catIntenc[cat]) catIntenc[cat] = { intencional: 0, no_intencional: 0 };
+  if (i === 'intencional') catIntenc[cat].intencional++;
+  else if (i === 'no_intencional') catIntenc[cat].no_intencional++;
+});
+
+const catTotals = {};
+baseCompleta.forEach(r => {
+  const cat = r.grupos_sustancia_final;
+  if (!cat || cat === 'nan') return;
+  catTotals[cat] = (catTotals[cat] || 0) + 1;
+});
+
+const catSexo = {};
+baseCompleta.forEach(r => {
+  const cat = r.grupos_sustancia_final;
+  const s = r.sexo;
+  if (!cat || cat === 'nan' || !s) return;
+  if (!catSexo[cat]) catSexo[cat] = { F: 0, M: 0 };
+  if (s === 'F') catSexo[cat].F++;
+  else if (s === 'M') catSexo[cat].M++;
+});
+
 const topFromMap = (map, n = 20) =>
   Object.entries(map).sort((a, b) => b[1] - a[1]).slice(0, n)
     .map(([prod, count]) => `${prod}: ${count}`).join(', ');
 
+const normalizeAccents = (str) =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 const matchCategory = (cat, query) => {
-  const q = query.toLowerCase();
-  const c = cat.toLowerCase();
+  const q = normalizeAccents(query);
+  const c = normalizeAccents(cat);
   if (q.includes(c)) return true;
   return c.split('_').some(w => w.length > 2 && q.includes(w));
 };
@@ -55,18 +85,23 @@ const searchLocalData = (userQuery) => {
   const query = userQuery.toLowerCase();
   const results = [];
 
+  const categoriasMencionadas = [...new Set(productosTodos.map(p => p.categoria))]
+    .filter(cat => matchCategory(cat, query));
+
+  const asksCompare = query.includes('compar') || query.includes('vs') || query.includes('versus')
+    || query.includes('contra') || query.includes('diferencia');
+
   const asksSexo = query.includes('sexo') || query.includes('femenino') || query.includes('masculino')
     || query.includes('hombre') || query.includes('mujer') || query.includes('mujeres')
-    || query.includes('hombres') || /\bf\b/.test(query) || /\bm\b/.test(query);
+    || query.includes('hombres') || /\bf\b/.test(query) || /\bm\b/.test(query)
+    || (asksCompare && categoriasMencionadas.length >= 2);
   const askF = asksSexo && (query.includes('femenino') || query.includes('mujer') || /\bf\b/.test(query));
   const askM = asksSexo && (query.includes('masculino') || query.includes('hombre') || /\bm\b/.test(query));
   const targetSex = askF ? 'F' : (askM ? 'M' : null);
 
   const asksIntenc = query.includes('intencional') || query.includes('accidental')
-    || query.includes('voluntario') || query.includes('deliberado');
-
-  const categoriasMencionadas = [...new Set(productosTodos.map(p => p.categoria))]
-    .filter(cat => matchCategory(cat, query));
+    || query.includes('voluntario') || query.includes('deliberado')
+    || (asksCompare && categoriasMencionadas.length >= 2);
 
   const productosMencionados = productosTodos.filter(p =>
     query.includes(p.producto.toLowerCase())
@@ -88,6 +123,20 @@ const searchLocalData = (userQuery) => {
       const totalCat = prods.reduce((sum, p) => sum + (p.conteo || 0), 0);
       results.push(`CATEGORÍA "${cat}" (${prods.length} productos únicos, ${totalCat} registros):\nTop 25: ${prods.slice(0, 25).map(p => `${p.producto}: ${p.conteo}`).join(', ')}`);
     }
+    if (asksIntenc && catIntenc[cat]) {
+      const d = catIntenc[cat];
+      const total = d.intencional + d.no_intencional;
+      const pctI = total ? ((d.intencional / total) * 100).toFixed(1) : 0;
+      const pctNI = total ? ((d.no_intencional / total) * 100).toFixed(1) : 0;
+      results.push(`INTENCIONALIDAD EN "${cat}": Intencional=${d.intencional.toLocaleString('es-CO')} (${pctI}%), No Intencional=${d.no_intencional.toLocaleString('es-CO')} (${pctNI}%), Total=${total.toLocaleString('es-CO')}`);
+    }
+    if (asksSexo && !targetSex && catSexo[cat]) {
+      const sx = catSexo[cat];
+      const sxTotal = sx.F + sx.M;
+      const pctF = sxTotal ? ((sx.F / sxTotal) * 100).toFixed(1) : 0;
+      const pctM = sxTotal ? ((sx.M / sxTotal) * 100).toFixed(1) : 0;
+      results.push(`SEXO EN "${cat}": Femenino=${sx.F.toLocaleString('es-CO')} (${pctF}%), Masculino=${sx.M.toLocaleString('es-CO')} (${pctM}%), Total=${sxTotal.toLocaleString('es-CO')}`);
+    }
   });
 
   if (asksSexo) {
@@ -97,11 +146,42 @@ const searchLocalData = (userQuery) => {
     results.push('DATOS SUSTANCIA × SEXO:\n' + sexoData);
   }
 
+  if (asksCompare && categoriasMencionadas.length >= 2) {
+    const compBlocks = categoriasMencionadas
+      .filter(cat => catIntenc[cat])
+      .map(cat => {
+        const d = catIntenc[cat];
+        const total = d.intencional + d.no_intencional;
+        const pctI = total ? ((d.intencional / total) * 100).toFixed(1) : 0;
+        const pctNI = total ? ((d.no_intencional / total) * 100).toFixed(1) : 0;
+        const totalAll = catTotals[cat] || 0;
+        const sx = catSexo[cat] || { F: 0, M: 0 };
+        const sxTotal = sx.F + sx.M;
+        const pctF = sxTotal ? ((sx.F / sxTotal) * 100).toFixed(1) : 0;
+        const pctM = sxTotal ? ((sx.M / sxTotal) * 100).toFixed(1) : 0;
+        return `COMPARACIÓN "${cat}": Total=${totalAll.toLocaleString('es-CO')} | Intencional=${d.intencional.toLocaleString('es-CO')} (${pctI}%) | No Intencional=${d.no_intencional.toLocaleString('es-CO')} (${pctNI}%) | Femenino=${sx.F.toLocaleString('es-CO')} (${pctF}%) | Masculino=${sx.M.toLocaleString('es-CO')} (${pctM}%)`;
+      });
+    if (compBlocks.length >= 2) results.push(compBlocks.join('\n'));
+  }
+
   if (asksIntenc) {
     const intData = sustanciasPorIntencionalidad.map(s =>
       `${s.sustancia}: total=${s.total}, intencional=${s.intencional} (${s.porcentaje_intencional}%), no_intencional=${s.no_intencional} (${s.porcentaje_no_intencional}%)`
     ).join('\n');
     results.push('DATOS SUSTANCIA × INTENCIONALIDAD:\n' + intData);
+
+    if (categoriasMencionadas.length >= 2) {
+      const compData = categoriasMencionadas
+        .filter(cat => catIntenc[cat])
+        .map(cat => {
+          const d = catIntenc[cat];
+          const total = d.intencional + d.no_intencional;
+          const pctI = total ? ((d.intencional / total) * 100).toFixed(1) : 0;
+          const pctNI = total ? ((d.no_intencional / total) * 100).toFixed(1) : 0;
+          return `${cat}: Intencional=${d.intencional.toLocaleString('es-CO')} (${pctI}%), No Intencional=${d.no_intencional.toLocaleString('es-CO')} (${pctNI}%), Total=${total.toLocaleString('es-CO')}`;
+        }).join('\n');
+      if (compData) results.push('COMPARACIÓN INTENCIONALIDAD ENTRE CATEGORÍAS:\n' + compData);
+    }
   }
 
   productosMencionados.forEach(p => {
@@ -122,7 +202,8 @@ const searchLocalData = (userQuery) => {
   }
 
   const baseContext = `KPIs: ${kpis.total_registros} registros, ${kpis.intencional} intencionales, ${kpis.no_intencional} no intencionales, F=${kpis.sexo_f}, M=${kpis.sexo_m}.
-Top sustancias: ${sustancias.slice(0,5).map(s=>`${s.sustancia}:${s.numero_registros}`).join(', ')}.`;
+Top sustancias: ${sustancias.slice(0,5).map(s=>`${s.sustancia}:${s.numero_registros}`).join(', ')}.
+Intencionalidad global: ${kpis.pct_intencional}% intencional, ${kpis.pct_no_intencional}% no intencional.`;
 
   return baseContext + '\n\n' + results.join('\n\n');
 };
@@ -181,7 +262,7 @@ Reglas de estilo y formato:
 const SUGGESTIONS = [
   '¿Cuál es el producto más frecuente en medicamentos_no_SPA?',
   'Compara alcohol_etanol entre hombres y mujeres',
-  'Top 10 sustancias por intencionalidad',
+  'Compara cocaína vs alcohol por intencionalidad',
   '¿Qué productos se encuentran en tranquilizantes?',
   'Resumen general del dataset',
 ];
