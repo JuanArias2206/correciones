@@ -493,10 +493,10 @@ const App = () => {
         <motion.section id="sexo" variants={secVar} initial="hidden" whileInView="visible" viewport={{once:true,margin:'-60px'}}>
           <SH icon={'\u26A5'} title="Analisis por Sexo"/>
           <div className="kpi-grid" style={{gridTemplateColumns:'1fr 1fr',maxWidth:480,marginBottom:'1.25rem'}}>
-            <KpiCard icon="\u2640" label="Total Femenino"  value={sexoTotales[0]?.numero_registros}
+            <KpiCard icon={'\u2640'} label="Total Femenino"  value={sexoTotales[0]?.numero_registros}
               sub={`${kpis.total_registros?((sexoTotales[0]?.numero_registros/kpis.total_registros)*100).toFixed(1):0}%`}
               color="pink" onClick={()=>setFilter('sexo','F')} active={filtros.sexo==='F'}/>
-            <KpiCard icon="\u2642" label="Total Masculino" value={sexoTotales[1]?.numero_registros}
+            <KpiCard icon={'\u2642'} label="Total Masculino" value={sexoTotales[1]?.numero_registros}
               sub={`${kpis.total_registros?((sexoTotales[1]?.numero_registros/kpis.total_registros)*100).toFixed(1):0}%`}
               color="primary" onClick={()=>setFilter('sexo','M')} active={filtros.sexo==='M'}/>
           </div>
